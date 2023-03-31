@@ -5,7 +5,12 @@ namespace NoteApp.Controllers
 {
     public class AccountController : Controller
     {
-        public IActionResult Index()
+        public IActionResult SignIn()
+        {
+            return View();
+        }
+
+        public IActionResult SignUp()
         {
             return View();
         }
