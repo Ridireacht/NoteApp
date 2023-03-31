@@ -7,17 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Views\Home\Новая папка\**" />
-    <Content Remove="Views\Home\Новая папка\**" />
-    <EmbeddedResource Remove="Views\Home\Новая папка\**" />
-    <None Remove="Views\Home\Новая папка\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Models\ErrorViewModel.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.4" />
   </ItemGroup>
 
