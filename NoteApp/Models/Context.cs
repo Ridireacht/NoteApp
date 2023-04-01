@@ -5,10 +5,9 @@ namespace NoteApp.Models
 {
     public class Context : DbContext
     {
-        // для тестирования работы EF
+        // проверяем наличие БД
         public Context()
         {
-            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
