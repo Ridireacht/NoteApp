@@ -5,22 +5,16 @@ namespace NoteApp.Authentication
 {
     public class UserRepository : IUserRepository
     {
-        // тестовый список пользователей
-        private List<User> _users = new()
+        // список для хранения всех пользователей
+        private List<User> _users = new();
+
+
+        // получение всех пользователей
+        public async void GetUsers()
         {
-            new User
-            {
-                ID = 1, Username = "peter", Password = "peter123"
-            },
-            new User
-            {
-                ID = 2, Username = "joydip", Password = "joydip123"
-            },
-            new User
-            {
-                ID = 3, Username = "james", Password = "james123"
-            }
-        };
+            var context = new Context();
+            _users = context.Users.ToList();
+        }
 
         
         // процедура аутентификации
