@@ -6,7 +6,7 @@ namespace NoteApp.Authentication
     public class UserRepository : IUserRepository
     {
         // тестовый список пользователей
-        private List<User> _users = new List<User>
+        private List<User> _users = new()
         {
             new User
             {
@@ -27,9 +27,8 @@ namespace NoteApp.Authentication
         public async Task<bool> Authenticate(string username, string password)
         {
             if (await Task.FromResult(_users.SingleOrDefault(x => x.Username == username && x.Password == password)) != null)
-            {
                 return true;
-            }
+            
             return false;
         }
 
@@ -37,14 +36,12 @@ namespace NoteApp.Authentication
         // получение списка имён пользователей
         public async Task<List<string>> GetUserNames()
         {
-            List<string> users = new List<string>();
+            List<string> usernames = new();
 
             foreach (var user in _users)
-            {
-                users.Add(user.Username);
-            }
+                usernames.Add(user.Username);
 
-            return await Task.FromResult(users);
+            return await Task.FromResult(usernames);
         }
     }
 }
