@@ -1,14 +1,10 @@
-using IdentityServer4.Models;
-using IdentityServer4;
-
-
 namespace NoteApp
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            // Add services to the container
+            // Добавляем сервисы в контейнер
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllersWithViews();
@@ -20,14 +16,12 @@ namespace NoteApp
                 .AddInMemoryClients(Configuration.Clients)
                 .AddDeveloperSigningCredential();
 
-            // App setup
+
+            // Настраиваем приложение
             var app = builder.Build();
 
             app.UseStaticFiles();
             app.UseRouting();
-            app.UseAuthentication();
-            app.UseAuthorization();
-
             app.UseIdentityServer();
 
             app.MapControllerRoute(
