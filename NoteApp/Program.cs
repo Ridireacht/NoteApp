@@ -8,7 +8,7 @@ namespace NoteApp
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllersWithViews();
-            builder.Services.AddDbContext<Models.Context>();
+            builder.Services.AddDbContext<Models.AuthDbContext>();
             builder.Services.AddIdentityServer()
                 .AddInMemoryApiResources(Configuration.ApiResources)
                 .AddInMemoryIdentityResources(Configuration.IdentityResources)
