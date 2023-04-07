@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Identity;
+using NoteApp.Models;
+
 namespace NoteApp
 {
     public class Program
@@ -9,6 +12,17 @@ namespace NoteApp
 
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<Models.AuthDbContext>();
+
+            builder.Services.AddIdentity<User, IdentityRole>(config =>
+            {
+                config.Password.RequiredLength = 6;
+                config.Password.RequireNonAlphanumeric = false;
+                config.Password.RequireDigit = false;
+                config.Password.RequireUppercase = false;
+            })
+                .AddEntityFrameworkStores<AuthDbContext>()
+                .AddDefaultTokenProviders();
+
             builder.Services.AddIdentityServer()
                 .AddInMemoryApiResources(Configuration.ApiResources)
                 .AddInMemoryIdentityResources(Configuration.IdentityResources)
