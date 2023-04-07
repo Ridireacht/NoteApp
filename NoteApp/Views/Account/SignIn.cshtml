@@ -1,9 +1,12 @@
-﻿<form id='login-form' action="" method='post'>
-	<input type="text" placeholder="Username" required>
-	<input type="password" placeholder="Password" required>
+﻿@model SignInViewModel
+<form asp-controller="Account" asp-action="SignIn" method="post">
+	<input type="hidden" asp-for="ReturnUrl" />
+	<input type="text" asp-for="Username" placeholder="Username" required>
+	<input type="password" asp-for="Password" placeholder="Password" required>
 	<button type='submit'>Login</button>
 	<button asp-controller="Account" asp-action="SignUp" formnovalidate>I don't have an account yet</button>
 </form>
+
 
 <style>
 	form {
