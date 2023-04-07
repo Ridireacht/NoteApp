@@ -40,7 +40,7 @@ namespace NoteApp.Controllers
             }
 
             var result = await _signInManager.PasswordSignInAsync(viewModel.Username, viewModel.Password, false, false);
-            
+
             if (result.Succeeded)
             {
                 return Redirect(viewModel.ReturnUrl);
@@ -51,9 +51,39 @@ namespace NoteApp.Controllers
             return View(viewModel);
         }
 
-        public IActionResult SignUp()
+
+        [HttpGet]
+        public IActionResult SignUp(string returnUrl)
         {
-            return View();
+            var viewModel = new SignUpViewModel { ReturnUrl = returnUrl };
+
+            return View(returnUrl);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> SignUp(SignUpViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
+            var user = new User
+            {
+                UserName = viewModel.Username
+            };
+
+            var result = await _userManager.CreateAsync(user, viewModel.Password);
+            if (result.Succeeded)
+            {
+                await _signInManager.SignInAsync(user, false);
+                return Redirect(viewModel.ReturnUrl);
+            }
+
+            ModelState.AddModelError(string.Empty, "Error occured");
+
+            return View(viewModel);
         }
     }
 }
