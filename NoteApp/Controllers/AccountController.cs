@@ -1,13 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
+using NoteApp.Models;
 
 namespace NoteApp.Controllers
 {
     public class AccountController : Controller
     {
-        public IActionResult SignIn()
+        [HttpGet]
+        public IActionResult SignIn(string returnUrl)
         {
-            return View();
+            var viewModel = new SignInViewModel { ReturnUrl = returnUrl };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult SignIn(SignInViewModel viewModel)
+        {
+            return View(viewModel);
         }
 
         public IActionResult SignUp()
