@@ -1,12 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace NoteApp.Models
 {
-    public class Context : DbContext
+    public class AuthDbContext : IdentityDbContext<User>
     {
         // проверяем наличие БД
-        public Context()
+        public AuthDbContext()
         {
             Database.EnsureCreated();
         }
