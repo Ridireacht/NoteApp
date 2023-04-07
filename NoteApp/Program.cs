@@ -24,11 +24,19 @@ namespace NoteApp
                 .AddDefaultTokenProviders();
 
             builder.Services.AddIdentityServer()
+                .AddAspNetIdentity<User>()
                 .AddInMemoryApiResources(Configuration.ApiResources)
                 .AddInMemoryIdentityResources(Configuration.IdentityResources)
                 .AddInMemoryApiScopes(Configuration.ApiScopes)
                 .AddInMemoryClients(Configuration.Clients)
                 .AddDeveloperSigningCredential();
+
+            builder.Services.ConfigureApplicationCookie(config =>
+            {
+                config.Cookie.Name = "Identity.Cookie";
+                config.LoginPath = "/Auth/Login";
+                config.LogoutPath = "/Auth/Logout";
+            });
 
 
             // Настраиваем приложение
