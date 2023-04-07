@@ -35,8 +35,8 @@ namespace NoteApp
             builder.Services.ConfigureApplicationCookie(config =>
             {
                 config.Cookie.Name = "Identity.Cookie";
-                config.LoginPath = "/Auth/Login";
-                config.LogoutPath = "/Auth/Logout";
+                config.LoginPath = "/Account/SignIn";
+                config.LogoutPath = "/Account/SignOut";
             });
 
 
@@ -52,7 +52,7 @@ namespace NoteApp
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}");
+                pattern: "{controller=Account}/{action=SignIn}/{method=get}");
 
             app.Run();
         }
