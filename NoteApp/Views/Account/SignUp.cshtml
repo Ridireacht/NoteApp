@@ -1,9 +1,16 @@
-﻿<form id='register-form' action="" method='post'>
-	<input type="text" placeholder="Username" required>
-	<input type="password" placeholder="Password" required>
+﻿@model SignUpViewModel
+<form asp-controller="Account" asp-action="SignUp" method="post">
+	<input type="hidden" asp-for="ReturnUrl" />
+	<input asp-for="Username" placeholder="Username" required>
+	<span asp-validation-for="Username"></span>
+	<input asp-for="Password" placeholder="Password" required>
+	<span asp-validation-for="Password"></span>
+	<input asp-for="ConfirmPassword" placeholder="Confirm password" required>
+	<span asp-validation-for="ConfirmPassword"></span>
 	<button type='submit'>Register</button>
-	<button asp-controller="Account" asp-action="SignIn" formnovalidate>I have an account already</button>
+	<button asp-controller="Account" asp-action="SignIn" method="get" formnovalidate>I have an account already</button>
 </form>
+
 
 <style>
 	form {
