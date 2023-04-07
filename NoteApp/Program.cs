@@ -12,6 +12,7 @@ namespace NoteApp
 
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<Models.AuthDbContext>();
+            builder.Services.AddRazorPages();
 
             builder.Services.AddIdentity<User, IdentityRole>(config =>
             {
@@ -45,6 +46,9 @@ namespace NoteApp
             app.UseStaticFiles();
             app.UseRouting();
             app.UseIdentityServer();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
