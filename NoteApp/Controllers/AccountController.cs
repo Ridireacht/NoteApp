@@ -11,7 +11,8 @@ namespace NoteApp.Controllers
     public class AccountController : Controller
     {
 
-        // Штуки для работы IdentityServer
+        // Штуки для работы IdentityServer. Первая - для входа, вторая -
+        // для работы с пользователем, третья - для logout'а
         private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
         private readonly IIdentityServerInteractionService _interactionService;
