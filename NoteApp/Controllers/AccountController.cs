@@ -32,9 +32,16 @@ namespace NoteApp.Controllers
         [HttpPost]
         public async Task<IActionResult> SignIn(SignInViewModel viewModel)
         {
-            // Если введённые данные не валидны, то возвращаем ту же форму
+            // Если введённые данные не валидны, то возвращаем ту же форму.
+            // Попутно выводим в консоль все ошибки (это для дебага)
             if (!ModelState.IsValid)
+            {
+                var allErrors = ModelState.Values.SelectMany(v => v.Errors.Select(b => b.ErrorMessage));
+
+                foreach (var error in allErrors) { Console.WriteLine(error); }
+
                 return View(viewModel);
+            }
 
 
             // Иначе пытаемся найти пользователя в БД. Если не находим, выдаём ошибку
@@ -53,9 +60,9 @@ namespace NoteApp.Controllers
             
             // Если вышло, то перенаправляем пользователя на главную
             if (result.Succeeded)
-                return Redirect("Home");
+                return Redirect("~/Home");
 
-            
+
             // Иначе выкидываем ошибку и возвращаем ту же форму авторизации
             ModelState.AddModelError(string.Empty, "Login error");
             return View(viewModel);
@@ -73,9 +80,16 @@ namespace NoteApp.Controllers
         [HttpPost]
         public async Task<IActionResult> SignUp(SignUpViewModel viewModel)
         {
-            // Если введённые данные не валидны, то возвращаем ту же форму
+            // Если введённые данные не валидны, то возвращаем ту же форму.
+            // Попутно выводим в консоль все ошибки (это для дебага)
             if (!ModelState.IsValid)
+            {
+                var allErrors = ModelState.Values.SelectMany(v => v.Errors.Select(b => b.ErrorMessage));
+
+                foreach (var error in allErrors) { Console.WriteLine(error); }
+
                 return View(viewModel);
+            }
 
 
             // Иначе пытаемся занести пользователя в БД. Если вышло, то перенаправляем
@@ -86,7 +100,7 @@ namespace NoteApp.Controllers
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(user, false);
-                return Redirect("Home");
+                return Redirect("~/Home");
             }
 
 
