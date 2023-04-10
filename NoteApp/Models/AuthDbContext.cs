@@ -7,6 +7,12 @@ namespace NoteApp.Models
 {
     public class AuthDbContext : IdentityDbContext<User>
     {
+        public AuthDbContext()
+        {
+            Database.EnsureCreated();
+        }
+
+
         // настройка
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
