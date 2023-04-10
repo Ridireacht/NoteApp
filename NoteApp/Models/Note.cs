@@ -9,9 +9,7 @@ namespace NoteApp.Models
         [Key]
         public int ID { get; set; }
 
-        [ForeignKey("User")]
         public int UserID { get; set; }
-        public User User { get; set; }
 
         public string Title { get; set; }
         public string Description { get; set; }
