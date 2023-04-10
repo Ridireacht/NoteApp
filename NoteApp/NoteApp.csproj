@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <Folder Include="Views\Home\Notes\" />
-    <Folder Include="wwwroot\" />
   </ItemGroup>
 
 </Project>
