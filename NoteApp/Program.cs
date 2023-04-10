@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Identity;
+using NoteApp.App_Data;
 using NoteApp.Models;
 
 namespace NoteApp
@@ -11,7 +12,7 @@ namespace NoteApp
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllersWithViews();
-            builder.Services.AddDbContext<Models.AuthDbContext>();
+            builder.Services.AddDbContext<AuthDbContext>();
             builder.Services.AddRazorPages();
 
             builder.Services.AddIdentity<User, IdentityRole>(config =>

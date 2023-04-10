@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using NoteApp.Models;
 
-
-namespace NoteApp.Models
+namespace NoteApp.App_Data
 {
     public class AuthDbContext : IdentityDbContext<User>
     {
