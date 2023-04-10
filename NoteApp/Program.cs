@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Internal;
 using NoteApp.App_Data;
 using NoteApp.Models;
 
@@ -54,6 +55,25 @@ namespace NoteApp
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Account}/{action=SignIn}/{method=get}");
+
+
+            // Проверяем, существует ли БД
+            using (var scope = app.Services.CreateScope())
+            {
+                var serviceProvider = scope.ServiceProvider;
+                try
+                {
+                    var context = serviceProvider.GetRequiredService<AuthDbContext>();
+                    DbInitializer.Initialize(context);
+                }
+
+                catch (Exception ex)
+                {
+                    var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred while DB creation!");
+                }
+            }
+
 
             app.Run();
         }
