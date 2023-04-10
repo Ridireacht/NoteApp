@@ -10,9 +10,7 @@ namespace NoteApp.App_Data
     // DbContext - интерпретатор между БД и кодом
     public class AuthDbContext : IdentityDbContext<User>
     {
-
-        // Создаём БД, если она ещё не создана
-        public AuthDbContext()
+        public AuthDbContext(DbContextOptions<AuthDbContext> options) : base (options)
         {
             Database.EnsureCreated();
         }
