@@ -8,7 +8,7 @@ namespace NoteApp.Models
         [Key]
         public int ID { get; set; }
 
-        public int UserID { get; set; }
+        public string Username { get; set; }
 
         public string Title { get; set; }
         public string Description { get; set; }

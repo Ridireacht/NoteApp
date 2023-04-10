@@ -11,7 +11,7 @@ namespace NoteApp.App_Data
         {
             // Настраиваем отношение между таблицами.
             // У каждого User может быть много Note, связь между ними: User.ID + Note.UserID
-            builder.HasMany(o => o.Notes).WithOne().HasForeignKey(d => d.UserID).IsRequired();
+            builder.HasMany(o => o.Notes).WithOne().HasForeignKey(d => d.Username).IsRequired();
         }
     }
 }
