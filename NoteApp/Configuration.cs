@@ -5,8 +5,11 @@ using IdentityServer4.Models;
 
 namespace NoteApp
 {
+
+    // Настройка IdentityServer'а
     public class Configuration
     {
+
         // ApiScope описывает то, что приложению можно использовать (доступ к областям)
         public static IEnumerable<ApiScope> ApiScopes =>
             new List<ApiScope>
