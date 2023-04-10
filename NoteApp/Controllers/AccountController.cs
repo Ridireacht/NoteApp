@@ -108,5 +108,17 @@ namespace NoteApp.Controllers
             ModelState.AddModelError(string.Empty, "Error occured");
             return View(viewModel);
         }
+
+
+        [HttpGet]
+        public async Task<IActionResult> SignOut(string logoutId)
+        {
+            await _signInManager.SignOutAsync();
+
+            var logoutRequest = await _interactionService.GetLogoutContextAsync(logoutId);
+
+            return Redirect(logoutRequest.PostLogoutRedirectUri);
+        }
+
     }
 }
