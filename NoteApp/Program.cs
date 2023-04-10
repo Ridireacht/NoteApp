@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using NoteApp.App_Data;
 using NoteApp.Models;
-
+using System.Net;
 
 namespace NoteApp
 {
@@ -66,6 +66,17 @@ namespace NoteApp
 
             // Ќастраиваем приложение
             var app = builder.Build();
+
+            // ≈сли не авторизован и попал на сторонние страницы, то редирект
+            // на страницу входа
+            app.UseStatusCodePages(async context =>
+            {
+                var response = context.HttpContext.Response;
+
+                if (response.StatusCode == (int)HttpStatusCode.Unauthorized ||
+                        response.StatusCode == (int)HttpStatusCode.Forbidden)
+                    response.Redirect("/Account/SignIn");
+            });
 
             app.UseStaticFiles();
             app.UseRouting();
