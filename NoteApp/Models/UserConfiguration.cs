@@ -7,7 +7,7 @@ namespace NoteApp.Models
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.HasKey(x => x.ID);
+            builder.HasMany(o => o.Notes).WithOne().HasForeignKey(d => d.ID).IsRequired();
         }
     }
 }
