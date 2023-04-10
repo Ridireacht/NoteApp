@@ -21,11 +21,9 @@ namespace NoteApp.Controllers
 
 
         [HttpGet]
-        public IActionResult SignIn(string returnUrl)
+        public IActionResult SignIn(string ErrorText)
         {
-            var viewModel = new SignInViewModel { ReturnUrl = returnUrl };
-
-            return View(viewModel);
+            return View();
         }
 
 
@@ -51,9 +49,9 @@ namespace NoteApp.Controllers
             var result = await _signInManager.PasswordSignInAsync(viewModel.Username, viewModel.Password, false, false);
 
             
-            // Если вышло, то перенаправляем пользователя на ReturnUrl
+            // Если вышло, то перенаправляем пользователя на главную
             if (result.Succeeded)
-                return Redirect(viewModel.ReturnUrl);
+                return Redirect("Home");
 
             
             // Иначе выкидываем ошибку и возвращаем ту же форму авторизации
@@ -63,11 +61,9 @@ namespace NoteApp.Controllers
 
 
         [HttpGet]
-        public IActionResult SignUp(string returnUrl)
+        public IActionResult SignUp(string ErrorText)
         {
-            var viewModel = new SignUpViewModel { ReturnUrl = returnUrl };
-
-            return View(viewModel);
+            return View();
         }
 
 
@@ -80,14 +76,14 @@ namespace NoteApp.Controllers
 
 
             // Иначе пытаемся занести пользователя в БД. Если вышло, то перенаправляем
-            // пользователя на ReturnUrl.
+            // пользователя на главнуб.
             var user = new User { UserName = viewModel.Username };
 
             var result = await _userManager.CreateAsync(user, viewModel.Password);
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(user, false);
-                return Redirect(viewModel.ReturnUrl);
+                return Redirect("Home");
             }
 
 
