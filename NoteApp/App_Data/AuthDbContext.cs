@@ -11,11 +11,17 @@ namespace NoteApp.App_Data
     public class AuthDbContext : IdentityDbContext<User>
     {
 
+        // Создаём БД, если она ещё не создана
+        public AuthDbContext()
+        {
+            Database.EnsureCreated();
+        }
+
+
         // Настройка EF - задаём путь, создаём БД (если ещё не создана)
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(@"Data Source=.\App_Data\NoteUser.sqlite3");
-            Database.EnsureCreated();
+            optionsBuilder.UseSqlite(@"Data Source=C:\Projects\NoteApp\NoteApp\App_Data\NoteUser.sqlite3");
         }
 
 
