@@ -61,6 +61,11 @@ namespace NoteApp
                 name: "default",
                 pattern: "{controller=Account}/{action=SignIn}/{method=get}");
 
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapDefaultControllerRoute();
+            });
+
 
             // Проверяем, существует ли БД
             using (var scope = app.Services.CreateScope())
