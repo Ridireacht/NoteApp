@@ -21,9 +21,10 @@ namespace NoteApp.Controllers
 
 
         [HttpGet]
-        public IActionResult SignIn(string ErrorText)
+        public IActionResult SignIn()
         {
-            return View();
+            var viewModel = new SignInViewModel();
+            return View(viewModel);
         }
 
 
@@ -61,9 +62,10 @@ namespace NoteApp.Controllers
 
 
         [HttpGet]
-        public IActionResult SignUp(string ErrorText)
+        public IActionResult SignUp()
         {
-            return View();
+            var viewModel = new SignUpViewModel();
+            return View(viewModel);
         }
 
 
