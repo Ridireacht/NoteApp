@@ -32,11 +32,13 @@ namespace NoteApp.Controllers
         [HttpPost]
         public async Task<IActionResult> SignIn(SignInViewModel viewModel)
         {
+            // Если возникла какая-то хрень, то возвращаем ту же форму авторизации
             if (!ModelState.IsValid)
-            {
                 return View(viewModel);
-            }
 
+
+            // Иначе пытаемся найти пользователя в БД. Если не находим, выдаём ошибку
+            // и возвращаем ту же форму авторизации
             var user = await _userManager.FindByNameAsync(viewModel.Username);
             if (user == null)
             {
@@ -44,15 +46,18 @@ namespace NoteApp.Controllers
                 return View(viewModel);
             }
 
+
+            // Если пользователь есть, то пытаемся залогиниться
             var result = await _signInManager.PasswordSignInAsync(viewModel.Username, viewModel.Password, false, false);
 
+            
+            // Если вышло, то возвращаем пользователя на ReturnUrl
             if (result.Succeeded)
-            {
                 return Redirect(viewModel.ReturnUrl);
-            }
 
+            
+            // Иначе выкидываем ошибку и возвращаем ту же форму авторизации
             ModelState.AddModelError(string.Empty, "Login error");
-
             return View(viewModel);
         }
 
