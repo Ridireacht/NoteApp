@@ -32,7 +32,7 @@ namespace NoteApp.Controllers
         [HttpPost]
         public async Task<IActionResult> SignIn(SignInViewModel viewModel)
         {
-            // Если возникла какая-то хрень, то возвращаем ту же форму авторизации
+            // Если введённые данные не валидны, то возвращаем ту же форму
             if (!ModelState.IsValid)
                 return View(viewModel);
 
@@ -73,7 +73,7 @@ namespace NoteApp.Controllers
         [HttpPost]
         public async Task<IActionResult> SignUp(SignUpViewModel viewModel)
         {
-            // Если возникла какая-то хрень, то возвращаем ту же форму регистрации
+            // Если введённые данные не валидны, то возвращаем ту же форму
             if (!ModelState.IsValid)
                 return View(viewModel);
 
