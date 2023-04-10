@@ -58,7 +58,7 @@ namespace NoteApp
                 .AddJwtBearer("Bearer", options =>
                 {
                     options.Authority = "http://localhost:25798/";
-                    options.Audience = "NotesApp";
+                    options.Audience = "NoteApp";
                     options.RequireHttpsMetadata = false;
                 });
 
