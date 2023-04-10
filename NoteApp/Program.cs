@@ -23,9 +23,9 @@ namespace NoteApp
 
             builder.Services.AddIdentity<User, IdentityRole>(config =>
             {
-                config.Password.RequiredLength = 6;
+                config.Password.RequiredLength = 8;
                 config.Password.RequireNonAlphanumeric = false;
-                config.Password.RequireDigit = false;
+                config.Password.RequireDigit = true;
                 config.Password.RequireUppercase = false;
             })
                 .AddEntityFrameworkStores<AuthDbContext>()
@@ -41,7 +41,7 @@ namespace NoteApp
 
             builder.Services.ConfigureApplicationCookie(config =>
             {
-                config.Cookie.Name = "Identity.Cookie";
+                config.Cookie.Name = "Notes.Identity.Cookie";
                 config.LoginPath = "/Account/SignIn";
                 config.LogoutPath = "/Account/SignOut";
             });
