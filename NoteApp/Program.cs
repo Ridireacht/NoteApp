@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using NoteApp.App_Data;
 using NoteApp.Models;
@@ -13,7 +14,11 @@ namespace NoteApp
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllersWithViews();
-            builder.Services.AddDbContext<AuthDbContext>();
+            builder.Services.AddDbContext<AuthDbContext>(options =>
+            {
+                options.UseSqlite(@"Data Source=C:\Projects\NoteApp\NoteApp\App_Data\NoteUser.sqlite3");
+            });
+
             builder.Services.AddRazorPages();
 
             builder.Services.AddIdentity<User, IdentityRole>(config =>
