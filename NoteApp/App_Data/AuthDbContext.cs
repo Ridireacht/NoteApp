@@ -42,8 +42,8 @@ namespace NoteApp.App_Data
         }
 
 
-        // Таблицы, которые должны map'иться в БД
-        public DbSet<User> Users { get; set; }
+        // Таблицы, которые должны map'иться в БД (кроме Users, она делает
+        // это по умолчанию)
         public DbSet<Note> Notes { get; set; }
     }
 }
