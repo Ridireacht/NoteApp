@@ -7,16 +7,11 @@ namespace NoteApp.Models
 {
     public class AuthDbContext : IdentityDbContext<User>
     {
-        public AuthDbContext()
-        {
-            Database.EnsureCreated();
-        }
-
-
         // настройка
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite(@"Data Source=.\App_Data\NoteUser.sqlite3");
+            Database.EnsureCreated();
         }
 
 
