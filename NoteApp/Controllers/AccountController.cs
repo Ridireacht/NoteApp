@@ -51,7 +51,7 @@ namespace NoteApp.Controllers
             var result = await _signInManager.PasswordSignInAsync(viewModel.Username, viewModel.Password, false, false);
 
             
-            // Если вышло, то возвращаем пользователя на ReturnUrl
+            // Если вышло, то перенаправляем пользователя на ReturnUrl
             if (result.Succeeded)
                 return Redirect(viewModel.ReturnUrl);
 
@@ -67,22 +67,21 @@ namespace NoteApp.Controllers
         {
             var viewModel = new SignUpViewModel { ReturnUrl = returnUrl };
 
-            return View(returnUrl);
+            return View(viewModel);
         }
 
 
         [HttpPost]
         public async Task<IActionResult> SignUp(SignUpViewModel viewModel)
         {
+            // Если возникла какая-то хрень, то возвращаем ту же форму регистрации
             if (!ModelState.IsValid)
-            {
                 return View(viewModel);
-            }
 
-            var user = new User
-            {
-                UserName = viewModel.Username
-            };
+
+            // Иначе пытаемся занести пользователя в БД. Если вышло, то перенаправляем
+            // пользователя на ReturnUrl.
+            var user = new User { UserName = viewModel.Username };
 
             var result = await _userManager.CreateAsync(user, viewModel.Password);
             if (result.Succeeded)
@@ -91,8 +90,9 @@ namespace NoteApp.Controllers
                 return Redirect(viewModel.ReturnUrl);
             }
 
-            ModelState.AddModelError(string.Empty, "Error occured");
 
+            // Если не вышло, возвращаем ошибку и ту же форму регистрации
+            ModelState.AddModelError(string.Empty, "Error occured");
             return View(viewModel);
         }
     }
