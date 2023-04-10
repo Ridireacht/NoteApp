@@ -1,6 +1,5 @@
 ﻿@model SignInViewModel
 <form asp-controller="Account" asp-action="SignIn" method="post">
-	<input type="hidden" asp-for="ReturnUrl" />
 	<input asp-for="Username" placeholder="Username" required>
 	<span asp-validation-for="Username"></span>
 	<input asp-for="Password" placeholder="Password" required>
