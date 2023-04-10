@@ -6,8 +6,11 @@ using NoteApp.Models;
 
 namespace NoteApp.App_Data
 {
+
+    // DbContext - интерпретатор между БД и кодом
     public class AuthDbContext : IdentityDbContext<User>
     {
+
         // Настройка EF - задаём путь, создаём БД (если ещё не создана)
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
