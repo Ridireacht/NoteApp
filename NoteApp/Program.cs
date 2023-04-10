@@ -27,6 +27,8 @@ namespace NoteApp
                 config.Password.RequireNonAlphanumeric = false;
                 config.Password.RequireDigit = true;
                 config.Password.RequireUppercase = false;
+                config.Password.RequireLowercase = false;
+                config.Password.RequiredUniqueChars = 0;
             })
                 .AddEntityFrameworkStores<AuthDbContext>()
                 .AddDefaultTokenProviders();
