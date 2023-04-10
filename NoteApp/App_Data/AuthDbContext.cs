@@ -3,11 +3,12 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using NoteApp.Models;
 
+
 namespace NoteApp.App_Data
 {
     public class AuthDbContext : IdentityDbContext<User>
     {
-        // настройка
+        // Настройка EF - задаём путь, создаём БД (если ещё не создана)
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite(@"Data Source=.\App_Data\NoteUser.sqlite3");
@@ -15,7 +16,7 @@ namespace NoteApp.App_Data
         }
 
 
-        //
+        // Настройка для IdentityServer
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -32,7 +33,7 @@ namespace NoteApp.App_Data
         }
 
 
-        // таблицы, которые будут map'иться в БД
+        // Таблицы, которые должны map'иться в БД
         public DbSet<User> Users { get; set; }
         public DbSet<Note> Notes { get; set; }
     }
