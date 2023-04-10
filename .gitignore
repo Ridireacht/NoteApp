@@ -351,3 +351,5 @@ MigrationBackup/
 
 # Database
 *.sqlite3
+NoteUser.sqlite3-shm
+NoteUser.sqlite3-wal
