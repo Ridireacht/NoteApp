@@ -3,14 +3,18 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using NoteApp.Models;
 
+
 namespace NoteApp.Controllers
 {
+
+    // AccountController управляет авторизацией и регистрацией
     public class AccountController : Controller
     {
+
+        // Штуки для работы IdentityServer
         private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
         private readonly IIdentityServerInteractionService _interactionService;
-
 
         public AccountController(SignInManager<User> signInManager, UserManager<User> userManager, IIdentityServerInteractionService interactionService)
             => (_signInManager, _userManager, _interactionService) = (signInManager, userManager, interactionService);
@@ -23,6 +27,7 @@ namespace NoteApp.Controllers
 
             return View(viewModel);
         }
+
 
         [HttpPost]
         public async Task<IActionResult> SignIn(SignInViewModel viewModel)
