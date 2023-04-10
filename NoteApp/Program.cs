@@ -1,8 +1,9 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
 using NoteApp.App_Data;
 using NoteApp.Models;
+
 
 namespace NoteApp
 {
@@ -47,6 +48,20 @@ namespace NoteApp
                 config.LoginPath = "/Account/SignIn";
                 config.LogoutPath = "/Account/SignOut";
             });
+
+            // Аутентификация в приложении, конфигурация 
+            builder.Services.AddAuthentication(config =>
+            {
+                config.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                config.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                .AddJwtBearer("Bearer", options =>
+                {
+                    options.Authority = "http://localhost:25798/";
+                    options.Audience = "NotesApp";
+                    options.RequireHttpsMetadata = false;
+                });
+
 
 
             // Настраиваем приложение
