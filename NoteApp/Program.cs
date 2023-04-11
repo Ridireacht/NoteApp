@@ -16,7 +16,7 @@ namespace NoteApp
 
             builder.Services.AddDbContext<AuthDbContext>(options =>
             {
-                options.UseSqlite(@"Data Source=C:\Projects\NoteApp\NoteApp\App_Data\NoteUser.sqlite3");
+                options.UseSqlite(@"Data Source=.\App_Data\NoteUser.sqlite3");
             });
 
             builder.Services.AddIdentity<User, IdentityRole>(config =>
