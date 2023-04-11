@@ -78,7 +78,7 @@ namespace NoteApp
                     response.Redirect("/Account/SignIn");
             });
 
-            app.UseHttpsRedirection();
+
             app.UseStaticFiles();
             app.UseRouting();
 
