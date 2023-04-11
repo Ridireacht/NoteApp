@@ -1,2 +1,5 @@
-﻿@model HomeViewModel
-<div asp-for="Username"></div>
+﻿@using NoteApp.Models
+@{
+	var info = ViewData["Info"] as HomeViewModel;
+}
+<div>@info.Username</div>
