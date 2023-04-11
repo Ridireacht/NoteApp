@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NoteApp.Models;
+using System.Security.Claims;
 
 
 namespace NoteApp.Controllers
@@ -12,9 +13,9 @@ namespace NoteApp.Controllers
         public IActionResult Index()
         {
             var viewModel = new HomeViewModel();
-            viewModel.Username = "test";
+            viewModel.Username = User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            ViewData["Info"] = viewModel;
+			ViewData["Info"] = viewModel;
 
             return View();
         }
