@@ -14,13 +14,10 @@ namespace NoteApp
             // Добавляем сервисы в контейнер
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<AuthDbContext>(options =>
             {
                 options.UseSqlite(@"Data Source=C:\Projects\NoteApp\NoteApp\App_Data\NoteUser.sqlite3");
             });
-
-            builder.Services.AddRazorPages();
 
             builder.Services.AddIdentity<User, IdentityRole>(config =>
             {
@@ -62,10 +59,13 @@ namespace NoteApp
                     options.RequireHttpsMetadata = false;
                 });
 
+			builder.Services.AddControllersWithViews();
+			builder.Services.AddRazorPages();
 
 
-            // Настраиваем приложение
-            var app = builder.Build();
+
+			// Настраиваем приложение
+			var app = builder.Build();
 
             // Если не авторизован и попал на сторонние страницы, то редирект
             // на страницу входа
@@ -78,17 +78,21 @@ namespace NoteApp
                     response.Redirect("/Account/SignIn");
             });
 
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
-            app.UseIdentityServer();
 
             app.UseAuthentication();
+            app.UseIdentityServer();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
             });
+
+            app.MapRazorPages();
+
 
 
             // Проверяем, существует ли БД
