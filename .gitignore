@@ -355,4 +355,4 @@ NoteUser.sqlite3-shm
 NoteUser.sqlite3-wal
 
 # Jwk
-.jwk
+*.jwk
