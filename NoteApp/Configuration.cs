@@ -14,7 +14,7 @@ namespace NoteApp
         public static IEnumerable<ApiScope> ApiScopes =>
             new List<ApiScope>
             {
-                new ApiScope("sample-scope")
+                new ApiScope("NoteAppWebAPI", "Web API")
             };
 
 
@@ -32,9 +32,9 @@ namespace NoteApp
         public static IEnumerable<ApiResource> ApiResources =>
             new List<ApiResource>
             {
-                new ApiResource("sample-api-resource", new [] { JwtClaimTypes.Name})
+                new ApiResource("NoteAppWebAPI", "Web API", new [] { JwtClaimTypes.Name})
                 {
-                    Scopes = {"sample-scope"}
+                    Scopes = { "NoteAppWebAPI" }
                 }
             };
 
@@ -45,8 +45,8 @@ namespace NoteApp
             {
                 new Client
                 {
-                    ClientId = "sample-id",
-                    ClientName = "sample-name",
+                    ClientId = "note-app-web-app",
+                    ClientName = "NoteApp Web",
                     AllowedGrantTypes = GrantTypes.Code,
                     RequireClientSecret = false,
                     RequirePkce = true,
@@ -66,8 +66,8 @@ namespace NoteApp
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
-                        "sample-scope"
-                    },
+						"NoteAppWebAPI"
+					},
                     AllowAccessTokensViaBrowser = true
                 }
             };
