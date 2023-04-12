@@ -22,15 +22,15 @@ namespace NoteApp.Controllers
 
 
         [HttpGet]
-        public IActionResult SignIn()
+        public IActionResult Login()
         {
-            var viewModel = new SignInViewModel();
+            var viewModel = new LoginViewModel();
             return View(viewModel);
         }
 
 
         [HttpPost]
-        public async Task<IActionResult> SignIn(SignInViewModel viewModel)
+        public async Task<IActionResult> Login(LoginViewModel viewModel)
         {
             // Если введённые данные не валидны, то возвращаем ту же форму.
             // Попутно выводим в консоль все ошибки (это для дебага)
@@ -70,15 +70,15 @@ namespace NoteApp.Controllers
 
 
         [HttpGet]
-        public IActionResult SignUp()
+        public IActionResult Register()
         {
-            var viewModel = new SignUpViewModel();
+            var viewModel = new RegisterViewModel();
             return View(viewModel);
         }
 
 
         [HttpPost]
-        public async Task<IActionResult> SignUp(SignUpViewModel viewModel)
+        public async Task<IActionResult> Register(RegisterViewModel viewModel)
         {
             // Если введённые данные не валидны, то возвращаем ту же форму.
             // Попутно выводим в консоль все ошибки (это для дебага)
@@ -111,7 +111,7 @@ namespace NoteApp.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> SignOut(string logoutId)
+        public async Task<IActionResult> Logout(string logoutId)
         {
             await _signInManager.SignOutAsync();
 

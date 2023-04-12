@@ -50,8 +50,8 @@ namespace NoteApp
 			services.ConfigureApplicationCookie(config =>
 			{
 				config.Cookie.Name = "NoteApp.Identity.Cookie";
-				config.LoginPath = "/Account/SignIn";
-				config.LogoutPath = "/Account/SignOut";
+				config.LoginPath = "/Account/Login";
+				config.LogoutPath = "/Account/Logout";
 			});
 
 			services.Configure<IdentityOptions>(options => options.ClaimsIdentity.UserIdClaimType = ClaimTypes.NameIdentifier);
