@@ -13,11 +13,11 @@ namespace NoteApp.Controllers
 
         // Штуки для работы IdentityServer. Первая - для входа, вторая -
         // для работы с пользователем, третья - для logout'а
-        private readonly SignInManager<User> _signInManager;
-        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
+        private readonly UserManager<AppUser> _userManager;
         private readonly IIdentityServerInteractionService _interactionService;
 
-        public AccountController(SignInManager<User> signInManager, UserManager<User> userManager, IIdentityServerInteractionService interactionService)
+        public AccountController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, IIdentityServerInteractionService interactionService)
             => (_signInManager, _userManager, _interactionService) = (signInManager, userManager, interactionService);
 
 
@@ -94,7 +94,7 @@ namespace NoteApp.Controllers
 
             // Иначе пытаемся занести пользователя в БД. Если вышло, то перенаправляем
             // пользователя на главнуб.
-            var user = new User { UserName = viewModel.Username };
+            var user = new AppUser { UserName = viewModel.Username };
 
             var result = await _userManager.CreateAsync(user, viewModel.Password);
             if (result.Succeeded)

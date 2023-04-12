@@ -27,7 +27,7 @@ namespace NoteApp
 				options.UseSqlite(connectionString);
 			});
 
-			services.AddIdentity<User, IdentityRole>(config =>
+			services.AddIdentity<AppUser, IdentityRole>(config =>
 			{
 				config.Password.RequiredLength = 8;
 				config.Password.RequireNonAlphanumeric = false;
@@ -40,7 +40,7 @@ namespace NoteApp
 				.AddDefaultTokenProviders();
 
 			services.AddIdentityServer()
-				.AddAspNetIdentity<User>()
+				.AddAspNetIdentity<AppUser>()
 				.AddInMemoryApiResources(Configuration.ApiResources)
 				.AddInMemoryIdentityResources(Configuration.IdentityResources)
 				.AddInMemoryApiScopes(Configuration.ApiScopes)

@@ -5,9 +5,9 @@ using NoteApp.Models;
 
 namespace NoteApp.App_Data
 {
-    public class UserConfiguration : IEntityTypeConfiguration<User>
+    public class AppUserConfiguration : IEntityTypeConfiguration<AppUser>
     {
-        public void Configure(EntityTypeBuilder<User> builder)
+        public void Configure(EntityTypeBuilder<AppUser> builder)
         {
             // Указываем, что Id - это ключ
             builder.HasKey(x => x.Id);
