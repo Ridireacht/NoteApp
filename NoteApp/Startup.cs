@@ -11,6 +11,7 @@ using System.Security.Claims;
 using NoteApp.App_Data;
 using NoteApp.Models;
 
+
 namespace NoteApp
 {
 	// Класс для настройки проекта
@@ -67,23 +68,13 @@ namespace NoteApp
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
 			if (env.IsDevelopment())
-			{
 				app.UseDeveloperExceptionPage();
-			}
-
-
-			app.UseStaticFiles(new StaticFileOptions
-			{
-				FileProvider = new PhysicalFileProvider(
-					Path.Combine(env.ContentRootPath, "Styles")),
-				RequestPath = "/styles"
-			});
-
 
 			app.UseRouting();
 			app.UseAuthentication();
 			app.UseIdentityServer();
 			app.UseAuthorization();
+
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapDefaultControllerRoute();
