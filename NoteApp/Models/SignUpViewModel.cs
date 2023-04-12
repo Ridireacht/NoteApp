@@ -16,5 +16,7 @@ namespace NoteApp.Models
         [DataType(DataType.Password)]
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
-    }
+
+		public string ReturnUrl { get; set; }
+	}
 }
