@@ -52,15 +52,15 @@ namespace NoteApp
                     RequirePkce = true,
                     RedirectUris =
                     {
-						"http://localhost:25798//signin-oidc"
+						"http://localhost:25798/signin-oidc"
 					},
                     AllowedCorsOrigins =
                     {
-						"http://localhost:25798//"
+						"http://localhost:25798"
 					},
                     PostLogoutRedirectUris =
                     {
-						"http://localhost:25798//signout-oidc"
+						"http://localhost:25798/signout-oidc"
 					},
                     AllowedScopes =
                     {
