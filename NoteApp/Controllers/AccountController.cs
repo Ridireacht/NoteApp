@@ -22,10 +22,14 @@ namespace NoteApp.Controllers
 
 
         [HttpGet]
-        public IActionResult Login()
+        public IActionResult Login(string returnUrl)
         {
-            var viewModel = new LoginViewModel();
-            return View(viewModel);
+			var viewModel = new LoginViewModel
+			{
+				ReturnUrl = returnUrl
+			};
+
+			return View(viewModel);
         }
 
 
@@ -70,10 +74,14 @@ namespace NoteApp.Controllers
 
 
         [HttpGet]
-        public IActionResult Register()
+        public IActionResult Register(string returnUrl)
         {
-            var viewModel = new RegisterViewModel();
-            return View(viewModel);
+			var viewModel = new RegisterViewModel
+			{
+				ReturnUrl = returnUrl
+			};
+
+			return View(viewModel);
         }
 
 
