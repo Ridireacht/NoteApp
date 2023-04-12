@@ -10,6 +10,7 @@ namespace NoteApp
 			// Создаём builder
 			var host = CreateHostBuilder(args).Build();
 
+
 			// Создаём scope и проверяем, существует ли БД
 			using (var scope = host.Services.CreateScope())
 			{
@@ -26,6 +27,7 @@ namespace NoteApp
 					logger.LogError(exception, "An error occurred while app initialization");
 				}
 			}
+
 
 			host.Run();
 		}
