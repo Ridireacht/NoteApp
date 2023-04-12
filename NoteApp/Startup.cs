@@ -29,10 +29,12 @@ namespace NoteApp
 
 			services.AddIdentity<User, IdentityRole>(config =>
 			{
-				config.Password.RequiredLength = 4;
-				config.Password.RequireDigit = false;
+				config.Password.RequiredLength = 8;
 				config.Password.RequireNonAlphanumeric = false;
+				config.Password.RequireDigit = true;
 				config.Password.RequireUppercase = false;
+				config.Password.RequireLowercase = false;
+				config.Password.RequiredUniqueChars = 1;
 			})
 				.AddEntityFrameworkStores<AuthDbContext>()
 				.AddDefaultTokenProviders();
