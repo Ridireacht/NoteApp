@@ -21,7 +21,7 @@
 				<form asp-controller="Account" asp-action="Login" id='register-form' method="post">
 					<input type="hidden" asp-for="ReturnUrl" />
 					<input asp-for="Username" type="text" placeholder="Логин" required>
-					<input asp-for="Password" type="password" id="password-input" placeholder="Пароль" required name="pwd1">
+					<input asp-for="Password" type="password" id="password-input" placeholder="Пароль" required>
 					<div class="Knopki">
 						<button id="submit-button" type='submit' class="button">Войти</button>
 						<a asp-controller="Account" asp-action="Register" method="get" asp-route-returnUrl="@Model.ReturnUrl" class="button1">Нет аккаунта?</a>

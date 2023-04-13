@@ -21,11 +21,11 @@
             <div class="bord">
             <form asp-controller="Account" asp-action="Register" id='register-form' method="post">
                     <input type="hidden" asp-for="ReturnUrl" />
-                    <input asp-for="Username" type="text" placeholder="Логин" id="login" name="Login" required>
+                    <input asp-for="Username" type="text" placeholder="Логин" id="login" required>
                     <p id="username-error-message"></p>
-                    <input asp-for="Password" type="password" id="password-input" placeholder="Пароль" required name="pwd">
+                    <input asp-for="Password" type="password" id="password-input" placeholder="Пароль" required>
                     <p id="password-error-message"></p>
-                    <input asp-for="ConfirmPassword" type="password" id="password-input1" placeholder="Проверка пароля" required name="pwd1">
+                    <input asp-for="ConfirmPassword" type="password" id="password-input1" placeholder="Проверка пароля" required>
                     <p id="error-message"></p>
                     <div class="Knopki">
                         <button id="submit-button" type='submit' class="button">Зарегистрироваться</button>
