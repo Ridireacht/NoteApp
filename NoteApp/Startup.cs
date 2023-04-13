@@ -65,6 +65,7 @@ namespace NoteApp
 			if (env.IsDevelopment())
 				app.UseDeveloperExceptionPage();
 
+			app.UseStaticFiles();
 			app.UseRouting();
 			app.UseAuthentication();
 			app.UseIdentityServer();
