@@ -1,26 +1,35 @@
 ﻿@model RegisterViewModel
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BCH notes</title>
-    <link rel="stylesheet" type="text/css" href="~/css/styles.css">
-</head>
 
-<div class="mestoform">
-    <div class="bord">
-        <form id='register-form' asp-controller="Account" asp-action="Register" method="post">
-            <input asp-for="Username" type="text" placeholder="Логин" id="login" name="Login" required>
-            <p id="username-error-message"></p>
-            <input asp-for="Password" type="password" id="password-input" placeholder="Пароль" required name="pwd">
-            <p id="password-error-message"></p>
-            <input asp-for="ConfirmPassword" type="password" id="password-input1" placeholder="Проверка пароля" required name="pwd1">
-            <p id="error-message"></p>
-            <div class="Knopki">
-                <button id="submit-button" type='submit' class="button">Зарегистрироваться</button>
-                <a asp-controller="Account" asp-action="Login" method="get" asp-route-returnUrl="@Model.ReturnUrl" class="button1">Есть аккаунт?</a>
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BCH notes</title>
+        <link rel="stylesheet" type="text/css" href="~/css/styles.css">
+    </head>
+
+    <body>
+        <div class="mestoform">
+            <div class="bord">
+            <form asp-controller="Account" asp-action="Register" id='register-form' method="post">
+                    <input asp-for="Username" type="text" placeholder="Логин" id="login" name="Login" required>
+                    <p id="username-error-message"></p>
+                    <input asp-for="Password" type="password" id="password-input" placeholder="Пароль" required name="pwd">
+                    <p id="password-error-message"></p>
+                    <input asp-for="ConfirmPassword" type="password" id="password-input1" placeholder="Проверка пароля" required name="pwd1">
+                    <p id="error-message"></p>
+                    <div class="Knopki">
+                        <button id="submit-button" type='submit' class="button">Зарегистрироваться</button>
+                        <a asp-controller="Account" asp-action="Login" method="get" asp-route-returnUrl="@Model.ReturnUrl" class="button1">Есть аккаунт?</a>
+                    </div>
+                </form>
             </div>
-        </form>
-    </div>
-</div>
-<script src="~/js/script.js"></script>
+        </div>
+
+        <script src="~/js/script.js"></script>
+    </body>
+
+</html>
