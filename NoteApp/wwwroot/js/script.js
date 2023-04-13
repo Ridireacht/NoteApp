@@ -48,7 +48,7 @@ input2.addEventListener("input", checkInputs);
 
 function checkInputs() {
     if (input1.value !== input2.value) {
-    errorMessage.textContent = "Если что пароли должны совпадать";
+    errorMessage.textContent = "Пароли должны совпадать";
     submitButton.disabled = true;
     } else {
     errorMessage.textContent = "";
