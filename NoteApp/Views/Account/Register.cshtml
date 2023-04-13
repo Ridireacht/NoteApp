@@ -1,28 +1,26 @@
 ﻿@model RegisterViewModel
-<form asp-controller="Account" asp-action="Register" method="post">
-	<input type="hidden" asp-for="ReturnUrl" />
-	<input asp-for="Username" placeholder="Username" required>
-	<input asp-for="Password" placeholder="Password" required>
-	<input asp-for="ConfirmPassword" placeholder="Confirm password" required>
-	<button type='submit'>Register</button>
-	<button asp-controller="Account" asp-action="Login" method="get" asp-route-returnUrl="@Model.ReturnUrl" formnovalidate>I have an account already</button>
-</form>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCH notes</title>
+    <link rel="stylesheet" type="text/css" href="~/css/styles.css">
+</head>
 
-
-<style>
-	form {
-		margin: 0 auto;
-		width: 300px
-	}
-
-	input {
-		margin-bottom: 3px;
-		padding: 10px;
-		width: 100%;
-		border: 1px solid #CCC
-	}
-
-	button {
-		padding: 10px
-	}
-</style>
+<div class="mestoform">
+    <div class="bord">
+        <form id='register-form' asp-controller="Account" asp-action="Register" method="post">
+            <input asp-for="Username" type="text" placeholder="Логин" id="login" name="Login" required>
+            <p id="username-error-message"></p>
+            <input asp-for="Password" type="password" id="password-input" placeholder="Пароль" required name="pwd">
+            <p id="password-error-message"></p>
+            <input asp-for="ConfirmPassword" type="password" id="password-input1" placeholder="Проверка пароля" required name="pwd1">
+            <p id="error-message"></p>
+            <div class="Knopki">
+                <button id="submit-button" type='submit' class="button">Зарегистрироваться</button>
+                <a asp-controller="Account" asp-action="Login" method="get" asp-route-returnUrl="@Model.ReturnUrl" class="button1">Есть аккаунт?</a>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="~/js/script.js"></script>
