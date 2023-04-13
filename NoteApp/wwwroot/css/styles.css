@@ -1,0 +1,100 @@
+.Info {
+    position: relative;
+}
+.Lin{
+    position: relative;
+    margin-top: 360px;
+    margin-left: 10px;
+}
+
+.mestoform2{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+}
+.bord2{
+    border: 3px solid rgb(23, 48, 21);
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    background-color: rgb(191, 195, 187);
+}
+
+* 
+{
+    margin: 0;
+    padding: 0;
+}
+body {
+background-color: rgb(200, 244, 152);
+
+}
+.mestoform{
+    height: 15vw;
+    width: 45vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 6px;
+}
+
+.bord{
+    border: 3px solid rgb(23, 48, 21);
+    padding: 0.5vw;
+    border-radius: 6px;
+    background-color: rgb(191, 195, 187);
+}
+input {
+    margin-bottom: 3px;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #039d12;
+    box-sizing: border-box;
+    font-size: 1.3vw;
+}
+.Knopki
+{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.3vw;
+    gap: 5px;
+    width: 100%;
+}
+.button1
+{
+    display: inline-block;
+    color: black;
+    text-decoration: none;
+    border: 1px solid #039d12;
+    background-color: white;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+}
+.button {
+    padding: 10px;
+    border: 1px solid #039d12;
+    cursor: pointer;
+    font-size: 1.3vw;
+    white-space: normal;
+    width: 100%;
+}
+#password-error-message
+{
+    display: none;
+    font-size: 0.9vw;
+    text-align: center;
+}
+#error-message
+{
+    font-size: 1vw;
+    text-align: center;
+}
+#username-error-message
+{
+    font-size: 1vw;
+    text-align: center;
+}
