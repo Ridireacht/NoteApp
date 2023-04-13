@@ -19,6 +19,7 @@
 		<div class="mestoform2">
 			<div class="bord2">
 				<form asp-controller="Account" asp-action="Login" id='register-form' method="post">
+					<input type="hidden" asp-for="ReturnUrl" />
 					<input asp-for="Username" type="text" placeholder="Логин" required>
 					<input asp-for="Password" type="password" id="password-input" placeholder="Пароль" required name="pwd1">
 					<div class="Knopki">
