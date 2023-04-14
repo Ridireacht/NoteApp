@@ -19,5 +19,13 @@ namespace NoteApp.Controllers
 
             return View();
         }
-    }
+
+
+		[HttpPost]
+		[Authorize]
+		public IActionResult CreateNote()
+		{
+			return View();
+		}
+	}
 }
