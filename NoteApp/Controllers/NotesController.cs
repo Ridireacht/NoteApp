@@ -59,7 +59,7 @@ namespace NoteApp.Controllers
 				cxt.SaveChanges();
 			}
 
-			return View();
+			return Redirect("~/Home");
 		}
 	}
 }
