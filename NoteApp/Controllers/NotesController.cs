@@ -3,10 +3,13 @@
 
 namespace NoteApp.Controllers
 {
+
+	[Route("Home/[controller]")]
 	public class NotesController : Controller
 	{
-		[HttpGet]
-		public IActionResult Index()
+
+		[HttpGet ("{noteId}")]
+		public IActionResult GetNote(int noteId)
 		{
 			return View();
 		}
