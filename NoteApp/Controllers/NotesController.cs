@@ -1,5 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using NoteApp.App_Data;
+
+// Проверяем, есть ли у этого пользователя заметка с таким ID.
+// Если её нет вовсе или она принадлежит другому, то кидаем 404.
 
 
 namespace NoteApp.Controllers
@@ -9,20 +13,27 @@ namespace NoteApp.Controllers
 	public class NotesController : Controller
 	{
 
-		[HttpGet("{noteId}")]
+		[HttpGet("{note_id}")]
 		[Authorize]
-		public IActionResult GetNote(int noteId)
+		public IActionResult GetNote(int note_id)
 		{
-			// Проверяем, есть ли у этого пользователя заметка с таким ID.
-			// Если её нет вовсе или она принадлежит другому, то кидаем 404.
-			if ()
-			{
-				return View();
-			}
-
 			return View();
 		}
 
 
+		[HttpPost("{note_id}")]
+		[Authorize]
+		public IActionResult UpdateNote(int note_id)
+		{
+			return View();
+		}
+
+
+		[HttpPost("{note_id}")]
+		[Authorize]
+		public IActionResult DeleteNote(int note_id)
+		{
+			return View();
+		}
 	}
 }
