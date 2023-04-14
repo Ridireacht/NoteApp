@@ -40,8 +40,22 @@ namespace NoteApp.Controllers
 
 		[HttpPost("{note_id}")]
 		[Authorize]
-		public IActionResult UpdateNote(int note_id)
+		public IActionResult UpdateNote(int note_id, NoteViewModel viewModel)
 		{
+			// Проводим обновление данных
+			using (var cxt = new AuthDbContext(default))
+			{
+				var result = cxt.Notes.SingleOrDefault(b => b.Id == note_id);
+				if (result != null)
+				{
+					result.Title = viewModel.Title;
+					result.Content = viewModel.Content;
+					result.CreationDate = viewModel.CreationDate;
+					result.LastModified = viewModel.LastModified;
+					cxt.SaveChanges();
+				}
+			}
+
 			return View();
 		}
 
