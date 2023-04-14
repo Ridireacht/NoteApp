@@ -2,10 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using NoteApp.App_Data;
 using NoteApp.Models;
-using System.Security.Claims;
-
-// Проверяем, есть ли у этого пользователя заметка с таким ID.
-// Если её нет вовсе или она принадлежит другому, то кидаем 404.
 
 
 namespace NoteApp.Controllers
@@ -19,6 +15,25 @@ namespace NoteApp.Controllers
 		[Authorize]
 		public IActionResult GetNote(int note_id)
 		{
+			// Получаем из БД ту самую записку
+			Note nt;
+			using (var cxt = new AuthDbContext(default))
+			{
+				nt = cxt.Notes.Find(note_id);
+			}
+			
+			
+			// Сохраняем инфу для вывода
+			var viewModel = new NoteViewModel()
+			{
+				Id = note_id,
+				Title = nt.Title,
+				Content = nt.Content,
+				CreationDate = nt.CreationDate,
+				LastModified = nt.LastModified
+			};
+			ViewData["Note"] = viewModel;
+
 			return View();
 		}
 
