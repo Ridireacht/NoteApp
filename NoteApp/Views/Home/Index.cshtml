@@ -1,4 +1,5 @@
 ﻿@model HomeViewModel
+@using NoteApp.Models;
 
 
 <!DOCTYPE html>
@@ -10,7 +11,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>BCH notes</title>
 		<link rel="stylesheet" type="text/css" href="~/css/home.css">
-        <link rel="stylesheet" type="text/css" href="~/css/header.css">
+        <link rel="stylesheet" type="text/css" href="~/css/menu.css">
         <link rel="stylesheet" type="text/css" href="~/css/footer.css">
 		<link rel="apple-touch-icon" sizes="180x180" href="~/favicon/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="~/favicon/favicon-32x32.png">
@@ -43,8 +44,6 @@
         <div class="Osnova">
 
             @{
-                @using NoteApp.Models;
-
                 var HomeModel = ViewData["HomeModel"] as HomeViewModel;
                 foreach (var note in HomeModel.Notes)
                 {
