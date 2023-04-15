@@ -17,7 +17,7 @@ namespace NoteApp.Controllers
 		{
 			// Получаем из БД ту самую записку
 			Note nt;
-			using (var cxt = new AuthDbContext(default))
+			using (var cxt = new AuthDbContext())
 			{
 				nt = cxt.Notes.Find(note_id);
 			}
@@ -43,7 +43,7 @@ namespace NoteApp.Controllers
 		public IActionResult UpdateNote(int note_id, NoteViewModel viewModel)
 		{
 			// Проводим обновление данных
-			using (var cxt = new AuthDbContext(default))
+			using (var cxt = new AuthDbContext())
 			{
 				var result = cxt.Notes.SingleOrDefault(b => b.Id == note_id);
 				if (result != null)
@@ -65,7 +65,7 @@ namespace NoteApp.Controllers
 		public IActionResult DeleteNote(int note_id)
 		{
 			// Удаляем заметку по её ID
-			using (var cxt = new AuthDbContext(default))
+			using (var cxt = new AuthDbContext())
 			{
 				Note nt = new Note() { Id = note_id };
 
