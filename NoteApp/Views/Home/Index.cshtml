@@ -9,6 +9,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>BCH notes</title>
 		<link rel="stylesheet" type="text/css" href="~/css/home.css">
+        <link rel="stylesheet" type="text/css" href="~/css/menu.css">
 		<link rel="apple-touch-icon" sizes="180x180" href="~/favicon/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="~/favicon/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="~/favicon/favicon-16x16.png">
@@ -16,141 +17,37 @@
 	</head>
 
 	<body>
+
+        <header class="header">
+            <nav class="menu">
+                <div>
+                    <ul class="Men1">
+                        <li class="menu-left"><a href="#" class="link">Producst</a></li>
+                        <li class="menu-left"><a href="#" class="link">About</a></li>
+                        <li class="menu-left"><a href="#" class="link">Blog</a></li>
+                        <li class="menu-left"><a href="#" class="link">Contacts</a></li>
+                    </ul>
+                </div>
+                <a href="#" class="logo">MYCOMPANY</a>
+                <div>
+                    <ul class="Men2">
+                        <li class="menu-right"><a href="#" class="link2 ">Sign UP</a></li>
+                        <li class="menu-right"><a href="#" class="link2 ">Login</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
         <div class="Osnova">
 
             <div class="Okna">
                 <div class="foto_block">
-                    <form class="form">
-                        <label class="laveli" for="text">Название твоей заметки:<p></p></label>
-                        <input type="text" id="text" name="text"><br>
-                        <button class="buttoni" type="button" onclick="saveText('form1')">Сохранить</button>
-                    </form>
                     <a asp-controller="Notes" asp-action="1" method="get"><img src="https://avatars.dzeninfra.ru/get-zen_doc/4355093/pub_60c905c28ac99c4838f81b11_60c908958ac99c4838fffefc/scale_2400" alt="Блокнот" class="foto" id="preview"></a>
-                    <div class="Cnopka">
-                        <input id="file-input" type="file" onchange="previewFile('preview', 'file-input')" placeholder="Выберите файл">
-                        <p><button class="delete-btn" onclick="deleteFile('preview', 'file-input')">Удалить</button></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="Okna">
-                <div class="foto_block">
-                    <form class="form">
-                        <label class="laveli" for="text1">Название твоей заметки:<p></p></label>
-                        <input type="text" id="text1" name="text1"><br>
-                        <button class="buttoni" type="button" onclick="saveText('form2')">Сохранить</button>
-                    </form>
-                    <a asp-controller="Notes" asp-action="2" method="get"><img src="https://avatars.dzeninfra.ru/get-zen_doc/4355093/pub_60c905c28ac99c4838f81b11_60c908958ac99c4838fffefc/scale_2400" alt="Блокнот" class="foto" id="preview1"></a>
-                    <div class="Cnopka">
-                        <input id="file-input1" type="file" onchange="previewFile('preview1', 'file-input1')" placeholder="Выберите файл">
-                        <p><button class="delete-btn" onclick="deleteFile('preview1', 'file-input1')">Удалить</button></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="Okna">
-                <div class="foto_block">
-                    <form class="form" id="form2">
-                        <label class="laveli" for="text2">Название твоей заметки:<p></p></label>
-                        <input type="text" id="text2" name="text2"><br>
-                        <button class="buttoni" type="button" onclick="saveText('form3')">Сохранить</button>
-                    </form>
-                    <a asp-controller="Notes" asp-action="3" method="get"><img src="https://avatars.dzeninfra.ru/get-zen_doc/4355093/pub_60c905c28ac99c4838f81b11_60c908958ac99c4838fffefc/scale_2400" alt="Блокнот" class="foto" id="preview2"></a>
-                    <div class="Cnopka">
-                        <input id="file-input2" type="file" onchange="previewFile('preview2', 'file-input2')" placeholder="Выберите файл">
-                        <p><button class="delete-btn" onclick="deleteFile('preview2', 'file-input2')">Удалить</button></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="Okna">
-                <div class="foto_block">
-                    <form class="form" id="form2">
-                        <label class="laveli" for="text2">Название твоей заметки:<p></p></label>
-                        <input type="text" id="text2" name="text2"><br>
-                        <button class="buttoni" type="button" onclick="saveText('form3')">Сохранить</button>
-                    </form>
-                    <a asp-controller="Notes" asp-action="4" method="get"><img src="https://avatars.dzeninfra.ru/get-zen_doc/4355093/pub_60c905c28ac99c4838f81b11_60c908958ac99c4838fffefc/scale_2400" alt="Блокнот" class="foto" id="preview2"></a>
-                    <div class="Cnopka">
-                        <input id="file-input2" type="file" onchange="previewFile('preview2', 'file-input2')" placeholder="Выберите файл">
-                        <p><button class="delete-btn" onclick="deleteFile('preview2', 'file-input2')">Удалить</button></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="Okna">
-                <div class="foto_block">
-                    <form class="form" id="form2">
-                        <label class="laveli" for="text2">Название твоей заметки:<p></p></label>
-                        <input type="text" id="text2" name="text2"><br>
-                        <button class="buttoni" type="button" onclick="saveText('form3')">Сохранить</button>
-                    </form>
-                    <a asp-controller="Notes" asp-action="5" method="get"><img src="https://avatars.dzeninfra.ru/get-zen_doc/4355093/pub_60c905c28ac99c4838f81b11_60c908958ac99c4838fffefc/scale_2400" alt="Блокнот" class="foto" id="preview2"></a>
-                    <div class="Cnopka">
-                        <input id="file-input2" type="file" onchange="previewFile('preview2', 'file-input2')" placeholder="Выберите файл">
-                        <p><button class="delete-btn" onclick="deleteFile('preview2', 'file-input2')">Удалить</button></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="Okna">
-                <div class="foto_block">
-                    <form class="form" id="form2">
-                        <label class="laveli" for="text2">Название твоей заметки:<p></p></label>
-                        <input type="text" id="text2" name="text2"><br>
-                        <button class="buttoni" type="button" onclick="saveText('form3')">Сохранить</button>
-                    </form>
-                    <a asp-controller="Notes" asp-action="6" method="get"><img src="https://avatars.dzeninfra.ru/get-zen_doc/4355093/pub_60c905c28ac99c4838f81b11_60c908958ac99c4838fffefc/scale_2400" alt="Блокнот" class="foto" id="preview2"></a>
-                    <div class="Cnopka">
-                        <input id="file-input2" type="file" onchange="previewFile('preview2', 'file-input2')" placeholder="Выберите файл">
-                        <p><button class="delete-btn" onclick="deleteFile('preview2', 'file-input2')">Удалить</button></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="Okna">
-                <div class="foto_block">
-                    <form class="form" id="form2">
-                        <label class="laveli" for="text2">Название твоей заметки:<p></p></label>
-                        <input type="text" id="text2" name="text2"><br>
-                        <button class="buttoni" type="button" onclick="saveText('form3')">Сохранить</button>
-                    </form>
-                    <a asp-controller="Notes" asp-action="7" method="get"><img src="https://avatars.dzeninfra.ru/get-zen_doc/4355093/pub_60c905c28ac99c4838f81b11_60c908958ac99c4838fffefc/scale_2400" alt="Блокнот" class="foto" id="preview2"></a>
-                    <div class="Cnopka">
-                        <input id="file-input2" type="file" onchange="previewFile('preview2', 'file-input2')" placeholder="Выберите файл">
-                        <p><button class="delete-btn" onclick="deleteFile('preview2', 'file-input2')">Удалить</button></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="Okna">
-                <div class="foto_block">
-                    <form class="form" id="form2">
-                        <label class="laveli" for="text2">Название твоей заметки:<p></p></label>
-                        <input type="text" id="text2" name="text2"><br>
-                        <button class="buttoni" type="button" onclick="saveText('form3')">Сохранить</button>
-                    </form>
-                    <a asp-controller="Notes" asp-action="8" method="get"><img src="https://avatars.dzeninfra.ru/get-zen_doc/4355093/pub_60c905c28ac99c4838f81b11_60c908958ac99c4838fffefc/scale_2400" alt="Блокнот" class="foto" id="preview2"></a>
-                    <div class="Cnopka">
-                        <input id="file-input2" type="file" onchange="previewFile('preview2', 'file-input2')" placeholder="Выберите файл">
-                        <p><button class="delete-btn" onclick="deleteFile('preview2', 'file-input2')">Удалить</button></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="Okna">
-                <div class="foto_block">
-                    <form class="form" id="form2">
-                        <label class="laveli" for="text2">Название твоей заметки:<p></p></label>
-                        <input type="text" id="text2" name="text2"><br>
-                        <button class="buttoni" type="button" onclick="saveText('form3')">Сохранить</button>
-                    </form>
-                    <a asp-controller="Notes" asp-action="9" method="get"><img src="https://avatars.dzeninfra.ru/get-zen_doc/4355093/pub_60c905c28ac99c4838f81b11_60c908958ac99c4838fffefc/scale_2400" alt="Блокнот" class="foto" id="preview2"></a>
-                    <div class="Cnopka">
-                        <input id="file-input2" type="file" onchange="previewFile('preview2', 'file-input2')" placeholder="Выберите файл">
-                        <p><button class="delete-btn" onclick="deleteFile('preview2', 'file-input2')">Удалить</button></p>
-                    </div>
-                </div>
+					<form class="form">
+						<label class="laveli" for="text">Название твоей заметки:<p></p></label>
+						<input type="text" id="text" name="text"><br>
+					</form>
+				</div>
             </div>
 
         </div>
