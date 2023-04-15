@@ -20,12 +20,7 @@ namespace NoteApp
 		// Добавляем и конфигурируем сервисы
 		public void ConfigureServices(IServiceCollection services)
 		{
-			var connectionString = AppConfiguration.GetValue<string>("DbConnection");
-
-			services.AddDbContext<AuthDbContext>(options =>
-			{
-				options.UseSqlite(connectionString);
-			});
+			services.AddDbContext<AuthDbContext>();
 
 			services.AddIdentity<AppUser, IdentityRole>(config =>
 			{

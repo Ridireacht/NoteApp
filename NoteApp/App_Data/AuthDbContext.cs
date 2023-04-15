@@ -10,7 +10,12 @@ namespace NoteApp.App_Data
     // DbContext - интерпретатор между БД и кодом
     public class AuthDbContext : IdentityDbContext<AppUser>
     {
-        public AuthDbContext(DbContextOptions<AuthDbContext> options) : base (options) { }
+
+        // Настройка EF - задаём путь
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlite("Data Source=.\\App_Data\\NoteUser.sqlite3");
+        }
 
 
         // Настройка для IdentityServer
