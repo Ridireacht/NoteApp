@@ -46,7 +46,8 @@
                 @{
                     foreach (var note in HomeModel.Notes)
                     {
-                        @Html.Raw($"<div class=\"Okna\"><div class=\"foto_block\"><a asp-controller=\"Notes\" asp-action=\"{note.Id}\" method=\"get\"><img src=\"https://avatars.dzeninfra.ru/get-zen_doc/4355093/pub_60c905c28ac99c4838f81b11_60c908958ac99c4838fffefc/scale_2400\" alt=\"Блокнот\" class=\"foto\" id=\"preview\"></a><form class=\"form\"><label class=\"laveli\" for=\"text\">Название твоей заметки:<p>{note.Title}</p></label><input type=\"text\" id=\"text\" name=\"text\"><br></form></div></div>");
+                    @Html.Raw($"<div class=\"Okna\"><div class=\"foto_block\"><a href=\"Notes/{note.Id}\"><img src=\"data:image/jpeg;base64,{Convert.ToBase64String(note.Image)}\" alt=\"Блокнот\" class=\"foto\" id=\"preview\"></a><form class=\"form\"><label class=\"laveli\" for=\"text\">Название твоей заметки:<p>{note.Title}</p></label><input type=\"text\" id=\"text\" name=\"text\"><br></form></div></div>")
+                    ;
                     }
                 }
 
