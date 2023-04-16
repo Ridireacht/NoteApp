@@ -22,36 +22,36 @@
 
 	<body>
 
-        <div class="wrapper">
+        <main class="main">
 
-            <main class="main">
+            <header class="header">
+                <nav class="menu">
+                    <ul class="Men1">
+                        <li class="menu-left"><a asp-controller="Home" asp-action="Index" class="link" >@HomeModel.Username</a></li>
+                    </ul>
+                    <img src="~/images/logo.png" alt="Лого" class="logo">
+                    <ul class="Men2">
+                        <li class="menu-right"><a class="button_menu" asp-controller="Home" asp-action="CreateNote">Создать заметку</a></li>
+                        <li class="menu-right"><a class="button_menu" asp-controller="Account" asp-action="Logout">Выйти из аккаунта</a></li>
+                    </ul>
+                </nav>
+            </header>  
 
-                <header class="header">
-                    <nav class="menu">
-                        <ul class="Men1">
-                            <li class="menu-left"><a asp-controller="Home" asp-action="Index" class="link" >@HomeModel.Username</a></li>
-                        </ul>
-                        <img src="~/images/logo.png" alt="Лого" class="logo">
-                        <ul class="Men2">
-                            <li class="menu-right"><a class="button_menu" asp-controller="Home" asp-action="CreateNote">Создать заметку</a></li>
-                            <li class="menu-right"><a class="button_menu" asp-controller="Account" asp-action="Logout">Выйти из аккаунта</a></li>
-                        </ul>
-                    </nav>
-                </header>  
+        </main>
 
-            </main>
+        <div class="Osnova">
 
-            <div class="Osnova">
-
-                @{
-                    foreach (var note in HomeModel.Notes)
-                    {
-                    @Html.Raw($"<div class=\"Okna\"><div class=\"foto_block\"><a href=\"Home/Notes/{note.Id}\"><img src=\"data:image/jpeg;base64,{Convert.ToBase64String(note.Image)}\" alt=\"Блокнот\" class=\"foto\" id=\"preview\"></a><form class=\"form\"><label class=\"laveli\" for=\"text\">Название твоей заметки:<p></p></label><input type=\"text\" id=\"text\" name=\"text\" value=\"{note.Title}\" readonly><br></form></div></div>")
-                    ;
-                    }
+            @{
+                foreach (var note in HomeModel.Notes)
+                {
+                @Html.Raw($"<div class=\"Okna\"><div class=\"foto_block\"><a href=\"Home/Notes/{note.Id}\"><img src=\"data:image/jpeg;base64,{Convert.ToBase64String(note.Image)}\" alt=\"Блокнот\" class=\"foto\" id=\"preview\"></a><form class=\"form\"><label class=\"laveli\" for=\"text\">Название твоей заметки:<p></p></label><input type=\"text\" id=\"text\" name=\"text\" value=\"{note.Title}\" readonly><br></form></div></div>")
+                ;
                 }
+            }
 
-            </div>
+        </div>
+
+        <div class="wrapper">
 
             <footer class="footer">
                 <div class="podval">
