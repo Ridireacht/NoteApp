@@ -12,6 +12,7 @@
     <label for="note-text">Введите текст заметки:</label>
     <textarea asp-for="Content" id="note-text">@NoteModel.Content</textarea>
 
+    <img src="data:image/jpeg;base64,@Convert.ToBase64String(NoteModel.Image)"></img>
     <input asp-for="Image" id="file-input" type="file" onchange="previewFile('preview', 'file-input')" placeholder="Выберите файл">
     <button type='submit'>Сохранить заметку</button>
     <a asp-controller="Notes" asp-action="DeleteNote" method="post">Удалить Заметку</a>
