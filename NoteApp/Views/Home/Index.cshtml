@@ -22,43 +22,48 @@
 
 	<body>
 
-        <header class="header">
-            <nav class="menu">
-                <div>
-                <ul class="Men1">
-                    <P><class="link">@HomeModel.Username</class=></P>
-                </ul>
-            </div>
-                <a asp-controller="Home" asp-action="Index" class="logo">
-                    <img src="~/images/logo.jpg" width="70" height="70" alt="Пример">
-                </a>
-                <div>
-                <ul class="Men2">
-                    <li class="menu-right">
-                        <a asp-controller="Account" asp-action="Logout"  class="link2 ">ВЫЙТИ ИЗ АККАУНТА</a>
-                    </li>
-                </ul>
-            </div>
-            </nav>
-        </header> 
-
-        <div class="Osnova">
-
-            @{
-                foreach (var note in HomeModel.Notes)
-                {
-                    @Html.Raw($"<div class=\"Okna\"><div class=\"foto_block\"><a asp-controller=\"Notes\" asp-action=\"{note.Id}\" method=\"get\"><img src=\"https://avatars.dzeninfra.ru/get-zen_doc/4355093/pub_60c905c28ac99c4838f81b11_60c908958ac99c4838fffefc/scale_2400\" alt=\"Блокнот\" class=\"foto\" id=\"preview\"></a><form class=\"form\"><label class=\"laveli\" for=\"text\">Название твоей заметки:<p>{note.Title}</p></label><input type=\"text\" id=\"text\" name=\"text\"><br></form></div></div>");
-                }
-            }
-
-        </div>
-
         <div class="wrapper">
+
+            <main class="main">
+                <header class="header">
+                    <nav class="menu">
+                        <div>
+                            <ul class="Men1">
+                                <P><class="link">@HomeModel.Username</class=></P>
+                            </ul>
+                        </div>
+                            <a asp-controller="Home" asp-action="Index" class="logo">
+                                <img src="~/images/logo.jpg" width="70" height="70" alt="Пример">
+                            </a>
+                            <div>
+                            <ul class="Men2">
+                                <li class="menu-right">
+                                    <a asp-controller="Account" asp-action="Logout"  class="link2 ">ВЫЙТИ ИЗ АККАУНТА</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </header> 
+            </main>
+
+            <div class="Osnova">
+
+                @{
+                    foreach (var note in HomeModel.Notes)
+                    {
+                        @Html.Raw($"<div class=\"Okna\"><div class=\"foto_block\"><a asp-controller=\"Notes\" asp-action=\"{note.Id}\" method=\"get\"><img src=\"https://avatars.dzeninfra.ru/get-zen_doc/4355093/pub_60c905c28ac99c4838f81b11_60c908958ac99c4838fffefc/scale_2400\" alt=\"Блокнот\" class=\"foto\" id=\"preview\"></a><form class=\"form\"><label class=\"laveli\" for=\"text\">Название твоей заметки:<p>{note.Title}</p></label><input type=\"text\" id=\"text\" name=\"text\"><br></form></div></div>");
+                    }
+                }
+
+            </div>
+
             <footer class="footer">
                 <div class="podval">
                     <div class="storon">
                         <div class="left-top">
+                        
                             <p class="logo">КОМПания</p>
+                            <a href="#">О НАС</a>
                             <p class="text">Наша компания предлагает наилучшие услуги в своей сфере, тем самым улучшая качество жизни людей, благодаря нашему сайту. </p>
                         </div>
                         <div class="right-top">
@@ -69,8 +74,7 @@
                     </div>
                     <div class="linia"></div>
                     <div>
-                        <p>© 2023 - .... all time </p>
-                    </div>
+                        <p>© 2023 - .... all time </p></div>
                 </div>
             </footer>
         </div>
