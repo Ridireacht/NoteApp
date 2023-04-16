@@ -32,7 +32,7 @@ namespace NoteApp.Controllers
 			};
 			ViewData["Note"] = viewModel;
 
-			return View();
+			return View("~/Views/Home/Notes/Note.cshtml", viewModel);
 		}
 
 
