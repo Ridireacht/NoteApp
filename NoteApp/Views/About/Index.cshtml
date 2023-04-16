@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@model AboutViewModel
+@{
+    var AboutModel = ViewData["AboutModel"] as AboutViewModel;
+}
+
+
+<!DOCTYPE html>
 <html lang="en">
 
 	<head>
@@ -13,51 +19,88 @@
 		<link rel="manifest" href="~/favicon/site.webmanifest">
 	</head>
 
-	<body class="body">
+    <body class="body_info">
+
+        <header class="header">
+            <nav class="menu">
+                <ul class="Men1">
+                    <li class="menu-left"><a asp-controller="Home" asp-action="Index" class="link">@AboutModel.Username</a></li>
+                </ul>
+                <img src="~/images/logo.png" alt="Лого" class="logo">
+                <ul class="Men2">
+                    <li class="menu-right"><a class="button_menu" asp-controller="Home" asp-action="CreateNote">Создать заметку</a></li>
+                    <li class="menu-right"><a class="button_menu" asp-controller="Account" asp-action="Logout">Выйти из аккаунта</a></li>
+                </ul>
+            </nav>
+        </header>
 
         <div class="kartochki">
 
             <div class="kartochka" id="cart1">
                 <div class="img_fot">
-                    <img src="~/images/Nikita.jpg" alt="Nikita">
+                    <img class="nashifoto" src="~/images/1.jpg" alt="Стас">
                     <p class="info_o_nas">
-                        Инфа о нас dhfjsdfjkhsdjkfhsdjkfkjsdhfksdhfkjsdhfkjshfkjshdfjkhsdkjfhskdjfhskdjfhsdjkfjkshkfh
+                        Инфа о нас : Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     </p>
                     <div class="inst_vk">
                         <a href=""><img class="foto_vk_inst" src="~/images/Instagram.png" alt="Инстограмм"></a>
-                        <a href=""><img class="foto_vk_inst" src="~/images/vk.png" alt="Вконтакте"></a>
+                        <a href="https://vk.com/orangedead"><img class="foto_vk_inst" src="~/images/vk.png" alt="Вконтакте"></a>
                     </div>
                 </div>
             </div>
 
             <div class="kartochka" id="cart2">
                 <div class="img_fot">
-                    <img src="~/images/Nikita.jpg" alt="Nikita">
+                    <img class="nashifoto" src="~/images/2.jpg" alt="Никита">
                     <p class="info_o_nas">
-                        Инфа о нас dhfjsdfjkhsdjkfhsdjkfkjsdhfksdhfkjsdhfkjshfkjshdfjkhsdkjfhskdjfhskdjfhsdjkfjkshkfh
+                        Инфа о нас : Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                     </p>
                     <div class="inst_vk">
                         <a href=""><img class="foto_vk_inst" src="~/images/Instagram.png" alt="Инстограмм"></a>
-                        <a href=""><img class="foto_vk_inst" src="~/images/vk.png" alt="Вконтакте"></a>
+                        <a href="https://vk.com/nikita_sbitnev"><img class="foto_vk_inst" src="~/images/vk.png" alt="Вконтакте"></a>
                     </div>
                 </div>
             </div>
 
             <div class="kartochka" id="cart3">
                 <div class="img_fot">
-                    <img src="~/images/Nikita.jpg" alt="Nikita">
+                    <img class="nashifoto" src="~/images/3.jpg" alt="Василий">
                     <p class="info_o_nas">
-                        Инфа о нас dhfjsdfjkhsdjkfhsdjkfkjsdhfksdhfkjsdhfkjshfkjshdfjkhsdkjfhskdjfhskdjfhsdjkfjkshkfh
+                        Инфа о нас : Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
                     </p>
                     <div class="inst_vk">
                         <a href=""><img class="foto_vk_inst" src="~/images/Instagram.png" alt="Инстограмм"></a>
-                        <a href=""><img class="foto_vk_inst" src="~/images/vk.png" alt="Вконтакте"></a>
+                        <a href="https://vk.com/ategnatos"><img class="foto_vk_inst" src="~/images/vk.png" alt="Вконтакте"></a>
                     </div>
                 </div>
             </div>
 
         </div>
 
-	</body>
+
+        <div class="wrapper">
+            <footer class="footer">
+                <div class="podval">
+                    <div class="storon">
+                        <div class="left-top">
+                            <p class="logotip">КОМПАНИЯ</p>
+                            <p class="text_podval">Наша компания предлагает наилучшие услуги в своей сфере, тем самым улучшая качество жизни людей, благодаря нашему сайту.</p>
+                        </div>
+                        <div class="right-top">
+                            <p class="sviz">Как с нами связаться</p>
+                            <p class="nomer">+7 (495) 000-00-00</p>
+                            <p>пр. Ленина, 125, Тула, Тульская обл., 300026</p>
+                        </div>
+                    </div>
+                    <div class="linia"></div>
+                    <div>
+                        <p class="Dopinfo">© 2023 КОМПАНИЯ ВСН. <a class="INFOrmaith" asp-controller="About" asp-action="Index">ИНФОРМАЦИЯ О НАС!</a></p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+    </body>
 
 </html>

@@ -1,34 +1,33 @@
-* 
-{
+* {
     margin: 0;
     padding: 0;
 }
-.body
-{
+
+.body_info {
     background-image: url("../images/sloi.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 100%;
 }
-.kartochki
-{
+
+.kartochki {
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
     height: 100vh;
     gap: 16.67vw;
 }
-.kartochka
-{
+
+.kartochka {
     border: 1px solid yellow;
     width: 17%;
     height: 50vh;
     border-radius: 30px;
     overflow: auto;
 }
-#cart1
-{
+
+#cart1 {
     background-color: #F5A623;
     transform: skewY(10deg);
     transform-origin: right;
@@ -36,14 +35,14 @@
     width: 19%;
     height: 50vh;
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.6), -2px -2px 5px rgba(255, 255, 255, 0.8);
-    
 }
-#cart2
-{
+
+#cart2 {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.6), -2px -2px 5px rgba(255, 255, 255, 0.8);
+    background-color: #F5A623;
 }
-#cart3
-{
+
+#cart3 {
     background-color: #F5A623;
     transform: skewY(-10deg);
     transform-origin: left;
@@ -52,34 +51,163 @@
     height: 50%;
     box-shadow: -10px 10px 5px rgba(0, 0, 0, 0.6), -3px -3px 5px rgba(255, 255, 255, 0.8);
 }
-.img_fot
-{
 
+.img_fot {
     width: 90%;
     height: 30%;
     padding: 5% 5% 5% 5%;
 }
-img{
+
+.nashifoto {
     border: 2px solid yellow;
     width: 100%;
-    height: 100%;
     border-radius: 30px 30px 0px 0px;
     object-fit: cover;
     max-width: 100%;
     height: auto;
 }
-.info_o_nas
-{
-    border:1px solid yellow;
+
+.info_o_nas {
+    border: 1px solid yellow;
     width: 90%;
     height: auto;
     padding: 5% 5% 5% 5%;
     line-height: 1.5em;
     word-wrap: break-word;
 }
-.foto_vk_inst
-{
+
+.foto_vk_inst {
     width: 20%;
     margin: 1vw 1vw 1vw 2.7vw;
     border-radius: 10vw;
+    border: 2px solid yellow;
+}
+
+.menu {
+    font-family: Montserrat;
+    padding: 0 2.60vw;
+    height: 5.21vw;
+    background-color: aliceblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Men1 {
+    list-style: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Men2 {
+    list-style: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.link {
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 26px;
+    color: black;
+    font-weight: bolder;
+}
+
+.logo {
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+    padding: 1vw 1vw 1vw 10vw;
+    border-radius: 50%;
+    width: 4%;
+    height: auto;
+    border-radius: 10vw;
+}
+
+.header {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.button_menu {
+    background-color: aliceblue;
+    padding: 1vw;
+    color: #05A88D;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    font-family: 'Exo 2', sans-serif;
+    height: 100%;
+}
+
+.footer {
+    flex: 0 0 auto;
+    background-color: #0c6161;
+    position: static;
+    bottom: 0;
+    width: 100%;
+}
+
+.podval {
+    margin: 20px 50px;
+    color: #FFFFFF;
+    font-size: 12px;
+}
+
+.storon {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logotip {
+    margin-bottom: 15px;
+    font-size: 28px;
+    color: #F5A623;
+    font-weight: bold;
+}
+
+.left-top {
+    width: 30%;
+}
+
+.sviz {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.nomer {
+    color: #F5A623;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.linia {
+    height: 1px;
+    max-width: 100%;
+    background-color: #FFFFFF;
+    margin: 15px 0px;
+}
+
+.Dopinfo {
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+.INFOrmaith {
+    color: #F5A623;
+}
+
+.text_podval {
+    font-size: 14px;
 }
