@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using NoteApp.App_Data;
 using NoteApp.Models;
+using System.Security.Claims;
 
 
 namespace NoteApp.Controllers
@@ -15,25 +16,25 @@ namespace NoteApp.Controllers
 		[Authorize]
 		public IActionResult GetNote(int note_id)
 		{
-			// Получаем из БД ту самую записку
-			Note nt;
+            var UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+			var viewModel = new NoteViewModel();
+
+
+            // Получаем из БД ту самую записку
+            Note nt;
 			using (var cxt = new AuthDbContext())
 			{
 				nt = cxt.Notes.Find(note_id);
-			}
-			
-			
-			// Сохраняем инфу для вывода
-			var viewModel = new NoteViewModel()
-			{
-				Id = note_id,
-				Title = nt.Title,
-				Content = nt.Content,
-				Image = nt.Image
-			};
+
+				viewModel.Id = note_id;
+				viewModel.Title = nt.Title;
+				viewModel.Content = nt.Content;
+				viewModel.Image = nt.Image;
+				viewModel.Username = cxt.Users.SingleOrDefault(b => b.Id == UserId).UserName;
+            }
 
 
-			ViewData["Note"] = viewModel;
+            ViewData["NoteModel"] = viewModel;
 			return View("~/Views/Home/Notes/Note.cshtml", viewModel);
 		}
 
