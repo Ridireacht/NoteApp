@@ -1,17 +1,83 @@
 ﻿@model NoteViewModel
-@using NoteApp.Models
+@using NoteApp.Models;
 @{
     var NoteModel = ViewData["NoteModel"] as NoteViewModel;
 }
 
-<form asp-controller="Notes" asp-action="UpdateNote" enctype="multipart/form-data" method="post">
-    <input asp-for="Id" hidden>
-    <label for="note-title">Введите название заметки:</label>
-    <input asp-for="Title" type="text" id="note-title" value="@NoteModel.Title">
 
-    <label for="note-text">Введите текст заметки:</label>
-    <textarea asp-for="Content" id="note-text">@NoteModel.Content</textarea>
+<!DOCTYPE html>
+<html lang="en">
 
-    <input asp-for="ImageUpload" placeholder="Выберите файл">
-    <button type='submit'>Сохранить заметку</button>
-</form>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>BCH notes</title>
+		<link rel="stylesheet" type="text/css" href="~/css/note.css">
+        <link rel="stylesheet" type="text/css" href="~/css/menu.css">
+        <link rel="stylesheet" type="text/css" href="~/css/footer.css">
+		<link rel="apple-touch-icon" sizes="180x180" href="~/favicon/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="~/favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="~/favicon/favicon-16x16.png">
+		<link rel="manifest" href="~/favicon/site.webmanifest">
+	</head>
+
+	<body>
+
+        <main class="main">
+
+            <header class="header">
+                <nav class="menu">
+                    <ul class="Men1">
+                        <li class="menu-left"><a asp-controller="Home" asp-action="Index" class="link" >@NoteModel.Username</a></li>
+                    </ul>
+                    <img src="~/images/logo.png" alt="Лого" class="logo">
+                    <ul class="Men2">
+                        <li class="menu-right"><a class="button_menu" asp-controller="Home" asp-action="CreateNote">Создать заметку</a></li>
+                        <li class="menu-right"><a class="button_menu" asp-controller="Account" asp-action="Logout">Выйти из аккаунта</a></li>
+                    </ul>
+                </nav>
+            </header>  
+
+        </main>
+
+        <form asp-controller="Notes" asp-action="UpdateNote" enctype="multipart/form-data" method="post">
+            <input asp-for="Id" hidden>
+            <p><label for="note-title">Название заметки:</label></p>
+            <p><input asp-for="Title" type="text" id="note-title" value="@NoteModel.Title"></p>
+
+            <p><label for="note-text">Текст заметки:</label></p>
+            <p><textarea asp-for="Content" id="note-text">@NoteModel.Content</textarea></p>
+  
+            <input asp-for="ImageUpload" id="file-input" placeholder="Выберите файл">
+            <p><button type="submit">Сохранить заметку</button>
+        </form>
+        
+
+        <div class="wrapper">
+
+            <footer class="footer">
+                <div class="podval">
+                    <div class="storon">
+                        <div class="left-top">
+                            <p class="logotip">КОМПАНИЯ</p>
+                            <p class="text_podval">Наша компания предлагает наилучшие услуги в своей сфере, тем самым улучшая качество жизни людей, благодаря нашему сайту.</p>
+                        </div>
+                        <div class="right-top">
+                            <p class="sviz">Как с нами связаться</p>
+                            <p class="nomer">+7 (495) 000-00-00</p>
+                            <p>пр. Ленина, 125, Тула, Тульская обл., 300026</p>
+                        </div>
+                    </div>
+                    <div class="linia"></div>
+                    <div>
+                        <p class="Dopinfo">© 2023 КОМПАНИЯ ВСН. <a class="INFOrmaith" asp-controller="About" asp-action="Index">ИНФОРМАЦИЯ О НАС!</a></p>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+
+	</body>
+
+</html>
