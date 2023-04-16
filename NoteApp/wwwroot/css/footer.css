@@ -3,7 +3,7 @@
     padding: 0;
 }
 
-html, body {
+.body_podval {
     font-family: 'Exo 2', sans-serif;
     height: 100%;
 }
@@ -14,7 +14,7 @@ html, body {
     min-height: 100%;
 }
 
-.main {
+.main_podval {
     flex: 1 0 auto;
 }
 
@@ -34,7 +34,7 @@ html, body {
     justify-content: space-between;
 }
 
-.logo {
+.logotip {
     margin-bottom: 15px;
     font-size: 28px;
     color: #F1E67D;
@@ -62,4 +62,17 @@ html, body {
     max-width: 100%;
     background-color: #FFFFFF;
     margin: 15px 0px;
+}
+
+.Dopinfo {
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+.INFOrmaith {
+    color: #F1E67D;
+}
+
+.text_podval {
+    font-size: 14px;
 }
