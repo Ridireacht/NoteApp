@@ -41,7 +41,6 @@ namespace NoteApp.Controllers
         [Authorize]
 		public IActionResult UpdateNote(NoteViewModel viewModel)
 		{
-			// Проводим обновление данных
 			using (var cxt = new AuthDbContext())
 			{
 				var nt = cxt.Notes.Find(viewModel.Id);
@@ -52,6 +51,7 @@ namespace NoteApp.Controllers
 
                     using (var memoryStream = new MemoryStream())
                     {
+						// Если фото загружено не было, то и обновлять не надо
 						if (viewModel.ImageUpload != null)
 						{
 							viewModel.ImageUpload.CopyTo(memoryStream);

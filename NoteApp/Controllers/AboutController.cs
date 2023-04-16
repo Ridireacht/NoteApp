@@ -13,10 +13,12 @@ namespace NoteApp.Controllers
             var UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var viewModel = new AboutViewModel();
 
+
             using (var cxt = new AuthDbContext())
             {
                 viewModel.Username = cxt.Users.SingleOrDefault(b => b.Id == UserId).UserName;
             }
+
 
             ViewData["AboutModel"] = viewModel;
             return View();
