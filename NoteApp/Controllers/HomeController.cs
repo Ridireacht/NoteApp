@@ -1,8 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NoteApp.App_Data;
 using NoteApp.Models;
+using System;
+using System.IO;
 using System.Security.Claims;
+using static System.Net.Mime.MediaTypeNames;
 
 
 namespace NoteApp.Controllers
@@ -40,7 +44,7 @@ namespace NoteApp.Controllers
 		[Authorize]
 		public IActionResult CreateNote()
 		{
-			int note_id;
+            int note_id;
 
 
 			// Заносим в БД новую (пустую заметку)
@@ -50,7 +54,8 @@ namespace NoteApp.Controllers
 				{
 					UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value,
 					Title = "",
-					Content = ""
+                    Content = "",
+					Image = System.IO.File.ReadAllBytes("wwwroot/images/default.jpg")
 				};
 
 				cxt.Notes.Add(nt);
