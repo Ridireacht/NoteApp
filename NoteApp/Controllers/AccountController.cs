@@ -24,10 +24,7 @@ namespace NoteApp.Controllers
         [HttpGet]
         public IActionResult Login(string returnUrl)
         {
-			var viewModel = new LoginViewModel
-			{
-				ReturnUrl = returnUrl
-			};
+			var viewModel = new LoginViewModel();
 
 			return View(viewModel);
         }
@@ -40,13 +37,14 @@ namespace NoteApp.Controllers
             // Попутно выводим в консоль все ошибки (это для дебага)
             if (!ModelState.IsValid)
             {
-                var allErrors = ModelState.Values.SelectMany(v => v.Errors.Select(b => b.ErrorMessage));
+                string messages = string.Join("; ", ModelState.Values
+                                        .SelectMany(x => x.Errors)
+                                        .Select(x => x.ErrorMessage));
 
-                foreach (var error in allErrors) { Console.WriteLine(error); }
+                Console.WriteLine(messages);
 
                 return View(viewModel);
             }
-
 
             // Иначе пытаемся найти пользователя в БД. Если не находим, выдаём ошибку
             // и возвращаем ту же форму авторизации
@@ -76,10 +74,7 @@ namespace NoteApp.Controllers
         [HttpGet]
         public IActionResult Register(string returnUrl)
         {
-			var viewModel = new RegisterViewModel
-			{
-				ReturnUrl = returnUrl
-			};
+			var viewModel = new RegisterViewModel();
 
 			return View(viewModel);
         }
@@ -89,15 +84,8 @@ namespace NoteApp.Controllers
         public async Task<IActionResult> Register(RegisterViewModel viewModel)
         {
             // Если введённые данные не валидны, то возвращаем ту же форму.
-            // Попутно выводим в консоль все ошибки (это для дебага)
             if (!ModelState.IsValid)
-            {
-                var allErrors = ModelState.Values.SelectMany(v => v.Errors.Select(b => b.ErrorMessage));
-
-                foreach (var error in allErrors) { Console.WriteLine(error); }
-
                 return View(viewModel);
-            }
 
 
             // Иначе пытаемся занести пользователя в БД. Если вышло, то перенаправляем
@@ -119,13 +107,11 @@ namespace NoteApp.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> Logout(string logoutId)
+        public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
 
-            var logoutRequest = await _interactionService.GetLogoutContextAsync(logoutId);
-
-            return Redirect(logoutRequest.PostLogoutRedirectUri);
+            return Redirect("~/Account/Login");
         }
 
     }
