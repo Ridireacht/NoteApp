@@ -51,7 +51,10 @@ namespace NoteApp.Controllers
 				{
 					result.Title = viewModel.Title;
 					result.Content = viewModel.Content;
-					result.Image = viewModel.Image;
+
+					if (viewModel.Image != null)
+						result.Image = viewModel.Image;
+
 					cxt.SaveChanges();
 				}
 			}
