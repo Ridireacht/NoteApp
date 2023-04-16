@@ -36,7 +36,7 @@ namespace NoteApp.Controllers
         }
 
 
-		[HttpPost]
+		[HttpGet]
 		[Authorize]
 		public IActionResult CreateNote()
 		{
@@ -65,7 +65,7 @@ namespace NoteApp.Controllers
 
 
 			// Переходим к новосозданной заметке
-			return Redirect($"~Home/Notes/{note_id}");
+			return Redirect($"~/Home/Notes/{note_id}");
 		}
 	}
 }
