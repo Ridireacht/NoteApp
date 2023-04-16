@@ -1,3 +1,18 @@
 ﻿@model NoteViewModel
+@using NoteApp.Models
+@{
+    var NoteModel = ViewData["NoteModel"] as NoteViewModel;
+}
 
-<div>something</div>
+<form asp-controller="Notes" asp-action="UpdateNote" method="post">
+    <input asp-for="Id" hidden>
+    <label for="note-title">Введите название заметки:</label>
+    <input asp-for="Title" type="text" id="note-title" value="@NoteModel.Title">
+
+    <label for="note-text">Введите текст заметки:</label>
+    <textarea asp-for="Content" id="note-text">@NoteModel.Content</textarea>
+
+    <input asp-for="Image" id="file-input" type="file" onchange="previewFile('preview', 'file-input')" placeholder="Выберите файл">
+    <button type='submit'>Сохранить заметку</button>
+    <a asp-controller="Notes" asp-action="DeleteNote" method="post">Удалить Заметку</a>
+</form>

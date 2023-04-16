@@ -8,7 +8,7 @@ using System.Security.Claims;
 namespace NoteApp.Controllers
 {
 
-	[Route("Home/[controller]")]
+	[Route("Home/Notes")]
 	public class NotesController : Controller
 	{
 
@@ -21,14 +21,13 @@ namespace NoteApp.Controllers
 
 
             // Получаем из БД ту самую записку
-            Note nt;
 			using (var cxt = new AuthDbContext())
 			{
-				nt = cxt.Notes.Find(note_id);
+				var nt = cxt.Notes.Single(x => x.Id == note_id);
 
 				viewModel.Id = note_id;
-				viewModel.Title = nt.Title;
-				viewModel.Content = nt.Content;
+                viewModel.Title = nt.Title;
+                viewModel.Content = nt.Content;
 				viewModel.Image = nt.Image;
 				viewModel.Username = cxt.Users.SingleOrDefault(b => b.Id == UserId).UserName;
             }
@@ -39,27 +38,27 @@ namespace NoteApp.Controllers
 		}
 
 
-		[HttpPost("{note_id}")]
+		[HttpPost]
 		[Authorize]
-		public IActionResult UpdateNote(int note_id, NoteViewModel viewModel)
+		public IActionResult UpdateNote(NoteViewModel viewModel)
 		{
 			// Проводим обновление данных
 			using (var cxt = new AuthDbContext())
 			{
-				var result = cxt.Notes.SingleOrDefault(b => b.Id == note_id);
-				if (result != null)
+				var nt = cxt.Notes.Find(viewModel.Id);
+				if (nt != null)
 				{
-					result.Title = viewModel.Title;
-					result.Content = viewModel.Content;
+					nt.Title = viewModel.Title;
+					nt.Content = viewModel.Content;
 
 					if (viewModel.Image != null)
-						result.Image = viewModel.Image;
+						nt.Image = viewModel.Image;
 
 					cxt.SaveChanges();
 				}
 			}
 
-			return View("~/Views/Home/Notes/Note.cshtml");
+			return Redirect($"~/Home/Notes/{viewModel.Id}");
 		}
 
 
