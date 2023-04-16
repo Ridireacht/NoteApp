@@ -37,7 +37,7 @@ namespace NoteApp.Controllers
 		}
 
 
-        [HttpPost]
+        [HttpPut]
         [Authorize]
 		public IActionResult UpdateNote(NoteViewModel viewModel)
 		{
@@ -67,8 +67,7 @@ namespace NoteApp.Controllers
 		}
 
 
-        [Route("Home/Notes/DeleteNote")]
-        [HttpGet("{note_id}")]
+        [HttpDelete]
 		[Authorize]
 		public IActionResult DeleteNote(int note_id)
 		{
