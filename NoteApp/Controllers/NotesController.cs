@@ -37,8 +37,8 @@ namespace NoteApp.Controllers
 		}
 
 
-		[HttpPost]
-		[Authorize]
+        [HttpPost]
+        [Authorize]
 		public IActionResult UpdateNote(NoteViewModel viewModel)
 		{
 			// Проводим обновление данных
@@ -67,21 +67,22 @@ namespace NoteApp.Controllers
 		}
 
 
-/*		[HttpPost]
+        [Route("Home/Notes/DeleteNote")]
+        [HttpGet("{note_id}")]
 		[Authorize]
-		public IActionResult DeleteNote(NoteViewModel viewModel)
+		public IActionResult DeleteNote(int note_id)
 		{
 			// Удаляем заметку по её ID
 			using (var cxt = new AuthDbContext())
 			{
-				Note nt = new Note() { Id = viewModel.Id };
+				Note nt = new Note() { Id = note_id };
 
 				cxt.Notes.Remove(nt);
 				cxt.SaveChanges();
 			}
 
 			return Redirect("~/Home");
-		}*/
+		}
 
 	}
 }
