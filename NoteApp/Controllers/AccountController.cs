@@ -22,7 +22,7 @@ namespace NoteApp.Controllers
 
 
         [HttpGet]
-        public IActionResult Login(string returnUrl)
+        public IActionResult Login()
         {
 			var viewModel = new LoginViewModel();
 
@@ -34,14 +34,12 @@ namespace NoteApp.Controllers
         public async Task<IActionResult> Login(LoginViewModel viewModel)
         {
             // Если введённые данные не валидны, то возвращаем ту же форму.
-            // Попутно выводим в консоль все ошибки (это для дебага)
+            // Попутно cобираем все ошибки (это для просмотра при дебаге)
             if (!ModelState.IsValid)
             {
                 string messages = string.Join("; ", ModelState.Values
                                         .SelectMany(x => x.Errors)
                                         .Select(x => x.ErrorMessage));
-
-                Console.WriteLine(messages);
 
                 return View(viewModel);
             }
@@ -72,7 +70,7 @@ namespace NoteApp.Controllers
 
 
         [HttpGet]
-        public IActionResult Register(string returnUrl)
+        public IActionResult Register()
         {
 			var viewModel = new RegisterViewModel();
 
@@ -85,7 +83,13 @@ namespace NoteApp.Controllers
         {
             // Если введённые данные не валидны, то возвращаем ту же форму.
             if (!ModelState.IsValid)
+            {
+                string messages = string.Join("; ", ModelState.Values
+                            .SelectMany(x => x.Errors)
+                            .Select(x => x.ErrorMessage));
+
                 return View(viewModel);
+            }
 
 
             // Иначе пытаемся занести пользователя в БД. Если вышло, то перенаправляем
