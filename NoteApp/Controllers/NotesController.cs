@@ -28,10 +28,12 @@ namespace NoteApp.Controllers
 			{
 				Id = note_id,
 				Title = nt.Title,
-				Content = nt.Content
+				Content = nt.Content,
+				Image = nt.Image
 			};
-			ViewData["Note"] = viewModel;
 
+
+			ViewData["Note"] = viewModel;
 			return View("~/Views/Home/Notes/Note.cshtml", viewModel);
 		}
 
@@ -52,7 +54,7 @@ namespace NoteApp.Controllers
 				}
 			}
 
-			return View();
+			return View("~/Views/Home/Notes/Note.cshtml");
 		}
 
 
