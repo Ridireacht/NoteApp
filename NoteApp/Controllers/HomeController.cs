@@ -50,9 +50,7 @@ namespace NoteApp.Controllers
 				{
 					UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value,
 					Title = "",
-					Content = "",
-					CreationDate = DateTime.Now,
-					LastModified = DateTime.Now
+					Content = ""
 				};
 
 				cxt.Notes.Add(nt);

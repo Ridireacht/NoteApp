@@ -28,9 +28,7 @@ namespace NoteApp.Controllers
 			{
 				Id = note_id,
 				Title = nt.Title,
-				Content = nt.Content,
-				CreationDate = nt.CreationDate,
-				LastModified = nt.LastModified
+				Content = nt.Content
 			};
 			ViewData["Note"] = viewModel;
 
@@ -50,8 +48,6 @@ namespace NoteApp.Controllers
 				{
 					result.Title = viewModel.Title;
 					result.Content = viewModel.Content;
-					result.CreationDate = viewModel.CreationDate;
-					result.LastModified = viewModel.LastModified;
 					cxt.SaveChanges();
 				}
 			}
