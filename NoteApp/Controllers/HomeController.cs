@@ -13,18 +13,23 @@ namespace NoteApp.Controllers
         [Authorize]
         public IActionResult Index()
         {
+			// Получаем ID пользователя, готовим ViewModel
             var UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var viewModel = new HomeViewModel();
 
-			//viewModel.Username = User.FindFirst(ClaimTypes.Name).Value;
 			viewModel.Notes = new List<Note>();
 
+
+			// Достаём из БД список заметок и username
 			using (var cxt = new AuthDbContext())
 			{
                 viewModel.Notes = (from c in cxt.Notes
 								   where c.UserId == UserId
 								   select c).ToList();
+
+				viewModel.Username = cxt.Users.SingleOrDefault(b => b.Id == UserId).UserName;
             }
+
 
 			ViewData["HomeModel"] = viewModel;
             return View();

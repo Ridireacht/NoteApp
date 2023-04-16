@@ -1,5 +1,6 @@
 ﻿@model HomeViewModel
 @using NoteApp.Models;
+@{ var HomeModel = ViewData["HomeModel"] as HomeViewModel; }
 
 
 <!DOCTYPE html>
@@ -25,7 +26,7 @@
             <nav class="menu">
                 <div>
                 <ul class="Men1">
-                    <P><class="link">НИК ЧЕЛА</class=></P>
+                    <P><class="link">@HomeModel.Username</class=></P>
                 </ul>
             </div>
                 <a asp-controller="Home" asp-action="Index" class="logo">
@@ -44,7 +45,6 @@
         <div class="Osnova">
 
             @{
-                var HomeModel = ViewData["HomeModel"] as HomeViewModel;
                 foreach (var note in HomeModel.Notes)
                 {
                     @Html.Raw($"<div class=\"Okna\"><div class=\"foto_block\"><a asp-controller=\"Notes\" asp-action=\"{note.Id}\" method=\"get\"><img src=\"https://avatars.dzeninfra.ru/get-zen_doc/4355093/pub_60c905c28ac99c4838f81b11_60c908958ac99c4838fffefc/scale_2400\" alt=\"Блокнот\" class=\"foto\" id=\"preview\"></a><form class=\"form\"><label class=\"laveli\" for=\"text\">Название твоей заметки:<p>{note.Title}</p></label><input type=\"text\" id=\"text\" name=\"text\"><br></form></div></div>");
