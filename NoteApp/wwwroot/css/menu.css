@@ -1,13 +1,13 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
-body
-{
+
+body {
     font-family: Montserrat;
 }
-.menu
-{
+
+.menu {
     padding: 0 50px;
     height: 100px;
     background-color: aliceblue;
@@ -15,57 +15,44 @@ body
     justify-content: space-between;
     align-items: center;
 }
-.Men1
-{
+
+.Men1 {
     list-style: none;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.Men2
-{
+
+.Men2 {
     list-style: none;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.link
-{
+
+.link {
     text-decoration: none;
     margin: 0 10px;
 }
-.link2
-{
+
+.link2 {
     text-decoration: none;
     margin: 0 10px;
-    color:#05A88D;
+    color: #05A88D;
 }
-.logo
-{
-    
+
+.logo {
     text-decoration: none;
     margin: 0 10px;
     font-size: 24px;
     color: #05A88D;
     font-weight: bold;
     width: 70px;
-    
 }
-.header{
+
+.header {
     width: 100%;
     box-sizing: border-box;
-}
-.link:hover
-{
-    color: #05A88D;
-    font-weight: bold;
-    font-size: 20px;
-}
-.link2:hover
-{
-    border: 1px solid #05A88D;
-    border-radius: 10px;
-    font-size: 20px ;
 }
