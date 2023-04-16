@@ -52,9 +52,11 @@ namespace NoteApp.Controllers
 
                     using (var memoryStream = new MemoryStream())
                     {
-                        viewModel.ImageUpload.CopyTo(memoryStream);
-                        if (viewModel.ImageUpload != null)
-                            nt.Image = memoryStream.ToArray();
+						if (viewModel.ImageUpload != null)
+						{
+							viewModel.ImageUpload.CopyTo(memoryStream);
+							nt.Image = memoryStream.ToArray();
+						}
                     }
 
 					cxt.SaveChanges();
