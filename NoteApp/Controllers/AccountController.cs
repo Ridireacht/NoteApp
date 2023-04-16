@@ -24,9 +24,7 @@ namespace NoteApp.Controllers
         [HttpGet]
         public IActionResult Login()
         {
-			var viewModel = new LoginViewModel();
-
-			return View(viewModel);
+			return View();
         }
 
 
@@ -43,6 +41,7 @@ namespace NoteApp.Controllers
 
                 return View(viewModel);
             }
+
 
             // Иначе пытаемся найти пользователя в БД. Если не находим, выдаём ошибку
             // и возвращаем ту же форму авторизации
@@ -72,9 +71,7 @@ namespace NoteApp.Controllers
         [HttpGet]
         public IActionResult Register()
         {
-			var viewModel = new RegisterViewModel();
-
-			return View(viewModel);
+			return View();
         }
 
 
@@ -82,6 +79,7 @@ namespace NoteApp.Controllers
         public async Task<IActionResult> Register(RegisterViewModel viewModel)
         {
             // Если введённые данные не валидны, то возвращаем ту же форму.
+            // Попутно cобираем все ошибки (это для просмотра при дебаге)
             if (!ModelState.IsValid)
             {
                 string messages = string.Join("; ", ModelState.Values
@@ -92,11 +90,12 @@ namespace NoteApp.Controllers
             }
 
 
-            // Иначе пытаемся занести пользователя в БД. Если вышло, то перенаправляем
-            // пользователя на главнуб.
+            // Иначе пытаемся занести пользователя в БД
             var user = new AppUser { UserName = viewModel.Username };
-
             var result = await _userManager.CreateAsync(user, viewModel.Password);
+
+
+            // Если вышло, то перенаправляем пользователя на главную
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(user, false);
