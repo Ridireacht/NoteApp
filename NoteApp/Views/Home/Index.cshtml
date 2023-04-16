@@ -25,28 +25,20 @@
         <div class="wrapper">
 
             <main class="main">
+
                 <header class="header">
                     <nav class="menu">
-                        <div>
-                            <ul class="Men1">
-                                <P><class="link">@HomeModel.Username</class=></P>
-                            </ul>
-                        </div>
-                            <a asp-controller="Home" asp-action="Index" class="logo">
-                                <img src="~/images/logo.jpg" width="70" height="70" alt="Пример">
-                            </a>
-                            <div>
-                            <ul class="Men2">
-                                <li class="menu-right">
-                                    <a asp-controller="Home" asp-action="CreateNote" class="link2 ">Создать заметку</a>
-                                </li>
-                                <li class="menu-right">
-                                    <a asp-controller="Account" asp-action="Logout"  class="link2 ">Выйти из аккаунта</a>
-                                </li>
-                            </ul>
-                        </div>
+                        <ul class="Men1">
+                            <li class="menu-left"><a asp-controller="Home" asp-action="Index" class="link" >@HomeModel.Username</a></li>
+                        </ul>
+                        <img src="~/images/logo.png" alt="Лого" class="logo">
+                        <ul class="Men2">
+                            <li class="menu-right"><button class="button_menu" asp-controller="Home" asp-action="CreateNote">Создать заметку</button></li>
+                            <li class="menu-right"><button class="button_menu" asp-controller="Account" asp-action="Logout">Выйти из аккаунта</button></li>
+                        </ul>
                     </nav>
-                </header> 
+                </header>  
+
             </main>
 
             <div class="Osnova">
