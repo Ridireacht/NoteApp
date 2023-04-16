@@ -28,7 +28,6 @@ namespace NoteApp.Controllers
 				viewModel.Id = note_id;
                 viewModel.Title = nt.Title;
                 viewModel.Content = nt.Content;
-				viewModel.Image = nt.Image;
 				viewModel.Username = cxt.Users.SingleOrDefault(b => b.Id == UserId).UserName;
             }
 
@@ -51,8 +50,12 @@ namespace NoteApp.Controllers
 					nt.Title = viewModel.Title;
 					nt.Content = viewModel.Content;
 
-					if (viewModel.Image != null)
-						nt.Image = viewModel.Image;
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        viewModel.ImageUpload.CopyTo(memoryStream);
+                        if (viewModel.ImageUpload != null)
+                            nt.Image = memoryStream.ToArray();
+                    }
 
 					cxt.SaveChanges();
 				}
@@ -62,20 +65,21 @@ namespace NoteApp.Controllers
 		}
 
 
-		[HttpPost("{note_id}")]
+/*		[HttpPost]
 		[Authorize]
-		public IActionResult DeleteNote(int note_id)
+		public IActionResult DeleteNote(NoteViewModel viewModel)
 		{
 			// Удаляем заметку по её ID
 			using (var cxt = new AuthDbContext())
 			{
-				Note nt = new Note() { Id = note_id };
+				Note nt = new Note() { Id = viewModel.Id };
 
 				cxt.Notes.Remove(nt);
 				cxt.SaveChanges();
 			}
 
 			return Redirect("~/Home");
-		}
+		}*/
+
 	}
 }
