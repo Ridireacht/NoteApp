@@ -41,16 +41,19 @@
 
         </main>
 
-        <form asp-controller="Notes" asp-action="UpdateNote" enctype="multipart/form-data" method="post">
+        <form asp-controller="Notes" asp-action="UpdateNote" enctype="multipart/form-data" method="post" class="form-class">
             <input asp-for="Id" hidden>
             <p><label for="note-title">Название заметки:</label></p>
             <p><input asp-for="Title" type="text" id="note-title" value="@NoteModel.Title"></p>
 
             <p><label for="note-text">Текст заметки:</label></p>
             <p><textarea asp-for="Content" id="note-text">@NoteModel.Content</textarea></p>
-  
-            <input asp-for="ImageUpload" id="file-input" placeholder="Выберите файл">
-            <p><button type="submit">Сохранить заметку</button>
+
+            <p><label for="note-title">Превью заметки:</label></p>
+            <input asp-for="ImageUpload" id="file-input" placeholder="Превью заметки">
+
+            <p><label for="note-title">Действия:</label></p>
+            <p><button type="submit">Сохранить изменения</button>
             <a href="~/Home/DeleteNote/@NoteModel.Id">Удалить заметку</a>
         </form>
         
